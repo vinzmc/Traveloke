@@ -25,7 +25,7 @@ class Login extends CI_Controller
 
 
         if ($this->form_validation->run() == FALSE) {
-            redirect('logins');
+            redirect('login');
         } else {
             $email = $this->input->post('email');
             $password = hash("sha256", ($this->input->post('password')));
