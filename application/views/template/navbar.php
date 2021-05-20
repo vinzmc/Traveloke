@@ -19,7 +19,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Booking Cart</a>
                 </li>
-                <?php if ($this->session->userdata('nama')) { ?>
+                <?php if (isset($_SESSION['name'])) { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('index.php/Login/logout'); ?>">Logout</a>
                     </li>

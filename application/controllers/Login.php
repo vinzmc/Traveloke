@@ -3,6 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Login extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('login_model');
+    }
+
     public function index()
     {
         $data['style'] = $this->load->view('include/style', NULL, TRUE);
@@ -12,12 +18,6 @@ class Login extends CI_Controller
         $this->load->view('pages/login', $data);
     }
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('login_model');
-    }
-
     public function login_validation()
     {
         $this->rules();
@@ -25,7 +25,7 @@ class Login extends CI_Controller
 
 
         if ($this->form_validation->run() == FALSE) {
-            redirect(base_url("index.php/Login"));
+            redirect('login');
         } else {
             $email = $this->input->post('email');
             $password = hash("sha256", ($this->input->post('password')));
@@ -87,8 +87,7 @@ class Login extends CI_Controller
                 $this->session->set_userdata('user_id', $cek->user_id);
                 $this->session->set_userdata('email', $cek->email);
                 $this->session->set_userdata('role_id', $cek->role_id);
-                $this->session->set_userdata('nama', $cek->nama);
-
+                $this->session->set_userdata('name', $cek->name);
                 switch ($cek->role_id) {
                     case 1:
                         redirect('user');
