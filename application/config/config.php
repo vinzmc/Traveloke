@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/php/UASLAB/';//
+$config['base_url'] = 'http://localhost/php/UASLAB/';
 
 $config['google_key'] = '6Lfn7NkaAAAAAFwot0o9fYiwrRc2kt7r90dvwLNI';
 $config['google_secret'] = '6Lfn7NkaAAAAANIOLTlETp_XHyHhnK8ZiFTBNSLe';
