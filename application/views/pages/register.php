@@ -55,12 +55,11 @@
                                 <input type="text" id="phone" class="form-control">
                                 <label for="phone">Phone Number</label>
                             </div>
-
                             <div class="form-label-group">
                                 <input type="file" id="img" class="form-control" size="20">
                                 <label for="img">Photo</label>
                             </div>
-
+                            
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign Up</button>
                         </form>
                     </div>
