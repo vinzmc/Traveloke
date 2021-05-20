@@ -18,7 +18,20 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h5 class="card-title text-center">Login</h5>
-                        <span class="m-2"><?= $this->session->flashdata('pesan'); ?></span>
+                        <?php if (isset($_SESSION['pesan'])) { ?>
+                            <span class="m-2">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <?= $_SESSION['pesan'] ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </span>
+                        <?php } ?>
+                        <?php if (isset($_SESSION['pesan'])) {
+                            unset($_SESSION['pesan']);
+                        } ?>
+
                         <form class="form-signin" method="post" action="<?= base_url("index.php/login/login_validation"); ?>">
                             <div class="form-label-group">
                                 <input name="email" type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
@@ -32,18 +45,13 @@
                                 <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
 
-                            <div class="form-group">
-                                <div class="d-block">
+                            <div class="form-group d-flex justify-content-center">
                                     <label for="captcha" class="control-label"></label>
-                                </div>
                                 <div class="g-recaptcha" data-sitekey="6Lfn7NkaAAAAAFwot0o9fYiwrRc2kt7r90dvwLNI" required></div>
                             </div>
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
-                            <?php
-                            echo '<label class="text-danger">' . $this->session->flashdata("error") . '</label>';
-                            ?>
                             <hr class="my-4">
-                            <a>Dont Have Account ? </a><a href="<?= base_url("index.php/Regist/index") ?>">Create Here !</a><br></br>
+                            <a>Dont Have Account ? </a><a href="<?= base_url("index.php/register") ?>">Create Here !</a><br></br>
                         </form>
                     </div>
                 </div>

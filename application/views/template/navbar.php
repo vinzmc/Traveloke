@@ -11,7 +11,7 @@
 <body>
 
     <nav class="navbar fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="<?= base_url("index.php/Welcome/index") ?>">Traveloke</a>
+        <a class="navbar-brand" href="<?= base_url("index.php/welcome") ?>">Traveloke</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -21,11 +21,11 @@
                 </li>
                 <?php if (isset($_SESSION['name'])) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('index.php/Login/logout'); ?>">Logout</a>
+                        <a class="nav-link" href="<?= base_url('index.php/login/logout'); ?>">Logout</a>
                     </li>
                 <?php } else {?>
                     <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url("index.php/Login") ?>">Login</a>
+                    <a class="nav-link" href="<?= base_url("index.php/login") ?>">Login</a>
                     </li>
                 <?php } ?>
                 <div class="dropdown show">
@@ -34,10 +34,10 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="<?= base_url("index.php/Welcome/kaleb") ?>">Kaleb Juliu</a>
-                        <a class="dropdown-item" href="<?= base_url("index.php/Welcome/moris") ?>">Maurice Marvin</a>
-                        <a class="dropdown-item" href="<?= base_url("index.php/Welcome/riki") ?>">Ricky Tandiono</a>
-                        <a class="dropdown-item" href="<?= base_url("index.php/Welcome/sergio") ?>">Sergio Nathaniel</a>
+                        <a class="dropdown-item" href="<?= base_url("index.php/welcome/kaleb") ?>">Kaleb Juliu</a>
+                        <a class="dropdown-item" href="<?= base_url("index.php/welcome/moris") ?>">Maurice Marvin</a>
+                        <a class="dropdown-item" href="<?= base_url("index.php/welcome/riki") ?>">Ricky Tandiono</a>
+                        <a class="dropdown-item" href="<?= base_url("index.php/welcome/sergio") ?>">Sergio Nathaniel</a>
                     </div>
                 </div>
             </ul>

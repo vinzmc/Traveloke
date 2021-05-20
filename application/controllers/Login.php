@@ -29,7 +29,6 @@ class Login extends CI_Controller
         } else {
             $email = $this->input->post('email');
             $password = hash("sha256", ($this->input->post('password')));
-            //$captcha = $this->input->post('captcha');
             $secret = '6Lfn7NkaAAAAANIOLTlETp_XHyHhnK8ZiFTBNSLe';
 
             $cek = $this->login_model->cek_login($email, $password);
@@ -47,42 +46,18 @@ class Login extends CI_Controller
             curl_setopt($startProcess, CURLOPT_RETURNTRANSFER, true);
 
             $receiveData = curl_exec($startProcess);
-
             $finalResponse = json_decode($receiveData, true);
 
-            if ($cek == FALSE) {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Email atau Password salah
-        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-          <span aria-hidden="true">&times;</span>
-        </button></div>');
-                $data['style'] = $this->load->view('include/style', NULL, TRUE);
-                $data['script'] = $this->load->view('include/script', NULL, TRUE);
-                $data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
-                $data['footer'] = $this->load->view('template/footer', NULL, TRUE);
-                $this->load->view('pages/login', $data);
-            } else if (!$finalResponse['success']) {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Capthca Tidak Benar!
-        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-          <span aria-hidden="true">&times;</span>
-        </button></div>');
-                $data['style'] = $this->load->view('include/style', NULL, TRUE);
-                $data['script'] = $this->load->view('include/script', NULL, TRUE);
-                $data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
-                $data['footer'] = $this->load->view('template/footer', NULL, TRUE);
-                $this->load->view('pages/login', $data);
+            if (!$finalResponse['success']) {
+                $this->session->set_flashdata('pesan', 'Capthca Tidak Benar!');
             } else if ($captcha_response == '') {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Mohon isi capthca
-        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-          <span aria-hidden="true">&times;</span>
-        </button></div>');
-                $data['style'] = $this->load->view('include/style', NULL, TRUE);
-                $data['script'] = $this->load->view('include/script', NULL, TRUE);
-                $data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
-                $data['footer'] = $this->load->view('template/footer', NULL, TRUE);
-                $this->load->view('pages/login', $data);
+                $this->session->set_flashdata('pesan', 'Mohon isi capthca');
+            } else if ($cek == FALSE) {
+                $this->session->set_flashdata('pesan', 'Email atau Password salah');
+            }
+
+            if (isset($_SESSION['pesan'])) {
+                redirect('login');
             } else {
                 $this->session->set_userdata('user_id', $cek->user_id);
                 $this->session->set_userdata('email', $cek->email);
@@ -96,6 +71,7 @@ class Login extends CI_Controller
                         redirect('admin');
                         break;
                     default:
+                        redirect();
                         break;
                 }
             }
@@ -106,7 +82,6 @@ class Login extends CI_Controller
     {
         $this->form_validation->set_rules('email', 'email', 'required', array('required' => 'Email Cant Be Empty !'));
         $this->form_validation->set_rules('password', 'password', 'required', array('required' => 'Password Cant Be Empty !'));
-        //$this->form_validation->set_rules('captcha', 'captcha', 'required', array('required' => 'Please Fill The Captcha !'));
     }
 
     public function logout()
