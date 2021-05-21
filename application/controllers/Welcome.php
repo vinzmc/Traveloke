@@ -27,35 +27,11 @@ class Welcome extends CI_Controller {
 		$this->load->view('pages/home', $data);
 	}
 
-	public function kaleb(){
+	public function about(){
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
 		$data['script'] = $this->load->view('include/script', NULL, TRUE);
 		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
 		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
-		$this->load->view('pages/kaleb', $data);
-	}
-
-	public function moris(){
-		$data['style'] = $this->load->view('include/style', NULL, TRUE);
-		$data['script'] = $this->load->view('include/script', NULL, TRUE);
-		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
-		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
-		$this->load->view('pages/moris', $data);
-	}
-
-	public function riki(){
-		$data['style'] = $this->load->view('include/style', NULL, TRUE);
-		$data['script'] = $this->load->view('include/script', NULL, TRUE);
-		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
-		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
-		$this->load->view('pages/riki', $data);
-	}
-
-	public function sergio(){
-		$data['style'] = $this->load->view('include/style', NULL, TRUE);
-		$data['script'] = $this->load->view('include/script', NULL, TRUE);
-		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
-		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
-		$this->load->view('pages/sergio', $data);
+		$this->load->view('pages/about', $data);
 	}
 }

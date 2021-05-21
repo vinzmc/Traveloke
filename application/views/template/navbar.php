@@ -34,7 +34,7 @@
                         <a class="nav-link" href="#">Booking Cart</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('index.php/about'); ?>">About Us</a>
+                        <a class="nav-link" href="<?= base_url('index.php/welcome/about'); ?>">About Us</a>
                     </li>
                     <?php if (isset($_SESSION['name'])) { ?>
                         <li class="nav-item">
@@ -45,19 +45,6 @@
                             <a class="nav-link" href="<?= base_url("index.php/login") ?>">Login</a>
                         </li>
                     <?php } ?>
-
-                    <li class="nav-item dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            About Us
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="<?= base_url("index.php/welcome/kaleb") ?>">Kaleb Juliu</a>
-                            <a class="dropdown-item" href="<?= base_url("index.php/welcome/moris") ?>">Maurice Marvin</a>
-                            <a class="dropdown-item" href="<?= base_url("index.php/welcome/riki") ?>">Ricky Tandiono</a>
-                            <a class="dropdown-item" href="<?= base_url("index.php/welcome/sergio") ?>">Sergio Nathaniel</a>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
