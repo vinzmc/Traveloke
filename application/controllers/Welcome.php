@@ -20,10 +20,13 @@ class Welcome extends CI_Controller {
 	 */
 	 public function index()
 	{
+		$hotel['data'] = $this->hotel->showData();
+
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
 		$data['script'] = $this->load->view('include/script', NULL, TRUE);
 		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
 		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
+
 		$this->load->view('pages/home', $data);
 	}
 
