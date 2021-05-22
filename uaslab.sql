@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2021 at 08:11 AM
+-- Generation Time: May 22, 2021 at 10:42 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -30,19 +30,26 @@ SET time_zone = "+00:00";
 CREATE TABLE `hotel_list` (
   `hotel-id` int(11) NOT NULL,
   `hotel-name` varchar(200) NOT NULL,
-  `hotel-city` varchar(200) NOT NULL,
+  `hotel-address` varchar(200) NOT NULL,
   `hotel-price` int(11) NOT NULL,
   `hotel-stock` int(11) NOT NULL,
-  `hotel-photo` varchar(200) NOT NULL
+  `hotel-photo` varchar(200) NOT NULL,
+  `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hotel_list`
 --
 
-INSERT INTO `hotel_list` (`hotel-id`, `hotel-name`, `hotel-city`, `hotel-price`, `hotel-stock`, `hotel-photo`) VALUES
-(1, 'Hotel Astoen', 'Bandung', 1500000, 56, 'assets/images/aston.JPEG'),
-(2, 'Hotel Trans', 'Bandung', 2400000, 75, 'assets/images/trans.JPEG');
+INSERT INTO `hotel_list` (`hotel-id`, `hotel-name`, `hotel-address`, `hotel-price`, `hotel-stock`, `hotel-photo`, `rating`) VALUES
+(1, 'Hotel Astoen', 'Bandung', 1500000, 56, 'aston.jpg', 5),
+(2, 'Hotel Trans', 'Bandung', 2400000, 75, 'trans.jpg', 4),
+(3, 'Four Seasons Resort', 'Jimbaran', 3000000, 86, 'jimbaran.jpg', 5),
+(4, 'Akhyana Village', 'Jimbaran ', 2600000, 46, 'akhyana.jpg', 5),
+(5, 'Ascott Waterplace Surabaya', 'Surabaya', 1190000, 86, 'ascot.jpg', 4),
+(6, 'DoubleTree by Hilton Surabaya', 'Surabaya', 1210000, 89, 'doubletree.jpg', 5),
+(7, 'Grand City Hall Medan', 'Medan', 730000, 23, 'grand.jpg', 4),
+(8, 'Cambridge Hotel Medan', 'Medan', 860000, 24, 'cambridge.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -93,7 +100,7 @@ ALTER TABLE `user_login`
 -- AUTO_INCREMENT for table `hotel_list`
 --
 ALTER TABLE `hotel_list`
-  MODIFY `hotel-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `hotel-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_login`

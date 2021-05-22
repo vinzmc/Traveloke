@@ -12,23 +12,11 @@
 
     <div class="box">
         <?php echo $navbar; ?>
-        <div class="container content navmargin">
-            <div class="row">
-                <?php foreach ($data as $row) : ?>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?= $row['hotel-photo'] ?>" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+        <div class="content" style="padding: 100px;">
+            <?php echo $view; ?>
         </div>
         <?php echo $footer; ?>
     </div>
-
 
     <?php echo $style; ?>
     <?php echo $script; ?>
