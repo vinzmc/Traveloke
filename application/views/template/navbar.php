@@ -10,20 +10,20 @@
 
 <body>
     <nav class="navbar fixed-top navbar-dark bg-dark" id="navbar">
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <a class="navbar-brand" href="<?= base_url("index.php/welcome") ?>" style="font-weight: 625;">Traveloke</a>
 
             <ul class="navbar-nav ml-auto mr-3">
                 <li class="nav-item" style="font-weight: 500;">
-                    
-                        <?php if (isset($_SESSION['name'])) { ?>
-                        <a class="nav-link" href="<?= base_url("index.php/user");?>">
+
+                    <?php if (isset($_SESSION['name'])) { ?>
+                        <a class="nav-link" href="<?= base_url("index.php/user"); ?>">
                             <?= $_SESSION['name']; ?>
                         <?php } else { ?>
-                        <a class="nav-link" href="<?= base_url("index.php/login");?>">
-                        <?= "Guest";
+                            <a class="nav-link" href="<?= base_url("index.php/login"); ?>">
+                            <?= "Guest";
                         } ?>
-                    </a>
+                            </a>
                 </li>
             </ul>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
