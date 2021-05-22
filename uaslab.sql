@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2021 at 02:40 PM
+-- Generation Time: May 22, 2021 at 08:11 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `uaslab`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hotel_list`
+--
+
+CREATE TABLE `hotel_list` (
+  `hotel-id` int(11) NOT NULL,
+  `hotel-name` varchar(200) NOT NULL,
+  `hotel-city` varchar(200) NOT NULL,
+  `hotel-price` int(11) NOT NULL,
+  `hotel-stock` int(11) NOT NULL,
+  `hotel-photo` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hotel_list`
+--
+
+INSERT INTO `hotel_list` (`hotel-id`, `hotel-name`, `hotel-city`, `hotel-price`, `hotel-stock`, `hotel-photo`) VALUES
+(1, 'Hotel Astoen', 'Bandung', 1500000, 56, 'assets/images/aston.JPEG'),
+(2, 'Hotel Trans', 'Bandung', 2400000, 75, 'assets/images/trans.JPEG');
 
 -- --------------------------------------------------------
 
@@ -51,6 +74,12 @@ INSERT INTO `user_login` (`user_id`, `name`, `email`, `password`, `date`, `phone
 --
 
 --
+-- Indexes for table `hotel_list`
+--
+ALTER TABLE `hotel_list`
+  ADD PRIMARY KEY (`hotel-id`);
+
+--
 -- Indexes for table `user_login`
 --
 ALTER TABLE `user_login`
@@ -59,6 +88,12 @@ ALTER TABLE `user_login`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `hotel_list`
+--
+ALTER TABLE `hotel_list`
+  MODIFY `hotel-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_login`
