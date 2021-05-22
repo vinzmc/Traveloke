@@ -13,7 +13,7 @@
         <?php echo $navbar; ?>
         <div class="container content navmargin">
             <div class="row">
-                content
+                <?php echo $view; ?>
             </div>
         </div>
         <?php echo $footer; ?>
