@@ -9,11 +9,11 @@
 </head>
 
 <body>
-    <div class="box">
+    <div class="box" style="background-color: #EDF9FF;">
         <?php echo $navbar; ?>
-        <div class="container content navmargin">
+        <div class="container content navmargin" style="background-color: white;">
             <div class="row">
-                <?php echo $view; ?>
+                
             </div>
         </div>
         <?php echo $footer; ?>
