@@ -13,9 +13,7 @@
     <div class="box">
         <?php echo $navbar ?>
         <section class="our-webcoderskull padding-lg content navmargin">
-            <div class="container">
-
-
+            <div class="container" style="margin-top: 25px;">
                 <ul class="row align-middle">
                     <div class="heading heading-icon">
                         <h2>About Us</h2>

@@ -9,10 +9,15 @@
 </head>
 
 <body>
-    <br></br><br></br><br></br><br></br>
-
-    <?php echo $navbar ?>
-    <?php echo $footer ?>
+    <div class="box">
+        <?php echo $navbar; ?>
+        <div class="container content navmargin">
+            <div class="row">
+                content
+            </div>
+        </div>
+        <?php echo $footer; ?>
+    </div>
     <?php echo $style ?>
     <?php echo $script ?>
 </body>

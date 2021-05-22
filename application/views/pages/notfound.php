@@ -11,11 +11,22 @@
 <body>
     <?php echo $navbar; ?>
 
-    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+    <div class="box">
+        <?php echo $navbar; ?>
+        <div class="container content navmargin">
+            <div class="row align-items-center h-100">
+                <div class="text-center">
+                    <img src="https://media.tenor.com/images/39f3d91c4b7052af998318a0324a33b8/tenor.gif" style="width:220px; height:220px">
+                    <h2>
+                        Sorry, </br>
+                        The Page You Are Looking For Cannot Be Found !
+                    </h2>
+                </div>
 
-    <h2 class="text-center">Sorry<br><br>The Page You Are Looking For Cannot Be Found !</h2>
-
-    <?php echo $footer; ?>
+            </div>
+        </div>
+        <?php echo $footer; ?>
+    </div>
     <?php echo $style; ?>
     <?php echo $script; ?>
 </body>

@@ -10,16 +10,18 @@
 
 <body>
     <nav class="navbar fixed-top navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="<?= base_url("index.php/welcome") ?>">Traveloke</a>
+        <div class="container-fluid" >
+            <a class="navbar-brand" href="<?= base_url("index.php/welcome") ?>" style="font-weight: 625;">Traveloke</a>
 
             <ul class="navbar-nav ml-auto mr-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                <li class="nav-item" style="font-weight: 500;">
+                    
                         <?php if (isset($_SESSION['name'])) { ?>
+                        <a class="nav-link" href="<?= base_url("index.php/profile");?>">
                             <?= $_SESSION['name']; ?>
                         <?php } else { ?>
-                        <?= "Guest Account";
+                        <a class="nav-link" href="<?= base_url("index.php/login");?>">
+                        <?= "Guest";
                         } ?>
                     </a>
                 </li>

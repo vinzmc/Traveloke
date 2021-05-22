@@ -208,8 +208,9 @@
 
     .heading h2 {
         color: white;
-        font-weight: 550;
-        -webkit-text-stroke: 1px #999999;
+        font-weight: 900;
+        -webkit-text-stroke: 0.7px #999999;
+        font-family: 'Trebuchet MS', sans-serif;
         font-size: 52.52px;
         line-height: 95px;
         text-align: center;
