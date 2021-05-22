@@ -20,6 +20,6 @@ class User extends CI_Controller
 
 		$data['view'] = $this->load->view('template/view', $hotel, TRUE);
 
-		$this->load->view('pages/home', $data);
+		$this->load->view('pages/user', $data);
 	}
 }

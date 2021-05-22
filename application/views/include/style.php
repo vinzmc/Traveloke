@@ -29,6 +29,22 @@
         transition: top 0.3s;
     }
 
+    .center-cropped {
+        width: 145px;
+        height: 175px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    /* Set the image to fill its parent and make transparent */
+    .center-cropped img {
+        min-height: 100%;
+        min-width: 100%;
+        /* modern browsers */
+        opacity: 0;
+    }
+
     .rcorner {
         border-radius: 10px;
     }
