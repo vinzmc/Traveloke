@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar fixed-top navbar-dark bg-dark" id="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="<?= base_url("index.php/welcome") ?>" style="font-weight: 625;">Traveloke</a>
+            <a class="navbar-brand" href="<?= base_url("index.php/home") ?>" style="font-weight: 625;">Traveloke</a>
 
             <ul class="navbar-nav ml-auto mr-3">
                 <li class="nav-item" style="font-weight: 500;">
@@ -36,7 +36,7 @@
                         <a class="nav-link" href="#">Booking Cart</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('index.php/welcome/about'); ?>">About Us</a>
+                        <a class="nav-link" href="<?= base_url('index.php/home/about'); ?>">About Us</a>
                     </li>
                     <?php if (isset($_SESSION['name'])) { ?>
                         <li class="nav-item">
