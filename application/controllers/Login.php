@@ -67,7 +67,7 @@ class Login extends CI_Controller
                 $this->session->set_userdata('picture', $cek->picture);
                 switch ($cek->role_id) {
                     case 1:
-                        redirect('home');
+                        redirect();
                         break;
                     case 2:
                         redirect('admin');

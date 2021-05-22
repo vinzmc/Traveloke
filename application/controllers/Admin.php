@@ -18,8 +18,6 @@ class Admin extends CI_Controller
 		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
 		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
 
-		$data['view'] = $this->load->view('template/view', $hotel, TRUE);
-
-		$this->load->view('pages/home', $data);
+		$this->load->view('pages/admin', $data);
 	}
 }

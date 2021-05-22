@@ -17,13 +17,17 @@
                 <li class="nav-item" style="font-weight: 500;">
 
                     <?php if (isset($_SESSION['name'])) { ?>
-                        <a class="nav-link" href="<?= base_url("index.php/user"); ?>">
-                            <?= $_SESSION['name']; ?>
-                        <?php } else { ?>
-                            <a class="nav-link" href="<?= base_url("index.php/login"); ?>">
-                            <?= "Guest";
-                        } ?>
-                            </a>
+                        <?php if ($_SESSION['role_id'] == 2) { ?>
+                            <a class="nav-link" href="<?= base_url("index.php/admin"); ?>">
+                            <?php } else { ?>
+                                <a class="nav-link" href="<?= base_url("index.php/user"); ?>">
+                                <?php } ?>
+                                <?= $_SESSION['name']; ?>
+                            <?php } else { ?>
+                                <a class="nav-link" href="<?= base_url("index.php/login"); ?>">
+                                <?= "Guest";
+                            } ?>
+                                </a>
                 </li>
             </ul>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
