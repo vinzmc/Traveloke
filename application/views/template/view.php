@@ -9,9 +9,6 @@
                         <p class="card-text"><?= $row['hotel-address'] ?></p>
                         <p class="card-text">Stock Available : <?= $row['hotel-stock'] ?></p>
                         <p class="card-text">Rp : <?= $row['hotel-price'] ?></p>
-                        <?php foreach(): ?>
-                            
-                        <?php endforeach; ?>
                         <a href="#" class="btn btn-primary">Book Now</a>
                     </div>
                 </div>
