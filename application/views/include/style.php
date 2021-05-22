@@ -50,7 +50,7 @@
     }
 
     .navmargin {
-        margin-top: 54px;
+        margin-top: 56px;
     }
 
     .box {
