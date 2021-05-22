@@ -21,7 +21,7 @@
                     </a>
                     <h1 class="mb-0 text-secondary">404</h1>
                     <h2 class="mt-0 text-secondary"> NOT FOUND </h2>
-                    <h5 class="mb-0 mt-4 text-info"> Page you're looking for is not exists!</h5>
+                    <h5 class="mb-0 mt-4 text-info"> The page you're looking for does not exist!</h5>
                     <small class="mt-0 text-secondary">Follow The duck</small>
                 </div>
 
