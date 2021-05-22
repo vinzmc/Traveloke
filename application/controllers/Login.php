@@ -63,9 +63,10 @@ class Login extends CI_Controller
                 $this->session->set_userdata('email', $cek->email);
                 $this->session->set_userdata('role_id', $cek->role_id);
                 $this->session->set_userdata('name', $cek->name);
+                $this->session->set_userdata('phone', $cek->phone);
                 switch ($cek->role_id) {
                     case 1:
-                        redirect('user');
+                        redirect('welcome');
                         break;
                     case 2:
                         redirect('admin');
