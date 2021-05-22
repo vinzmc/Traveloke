@@ -17,14 +17,16 @@
         height: 60px;
         margin-bottom: 0;
         text-align: center;
-        background: #777;
-        color: white;
     }
 
     ul {
         margin: 0;
         padding: 0;
         list-style: none;
+    }
+
+    .rcorner {
+        border-radius: 10px;
     }
 
     .navmargin {
@@ -204,11 +206,12 @@
         }
     }
 
-    .row.heading h2 {
-        color: #fff;
+    .heading h2 {
+        color: white;
+        font-weight: 550;
+        -webkit-text-stroke: 1px #999999;
         font-size: 52.52px;
         line-height: 95px;
-        font-weight: 400;
         text-align: center;
         margin: 0 0 40px;
         padding-bottom: 20px;
@@ -256,7 +259,7 @@
 
 
     .our-webcoderskull {
-        background-color: #d3ccbf;
+        background-color: whitesmoke;
 
     }
 
