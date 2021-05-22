@@ -5,6 +5,42 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    footer {
+        position: static;
+        padding: 15px;
+        width: 100%;
+        height: 60px;
+        margin-bottom: 0;
+        text-align: center;
+        background: #777;
+        color: white;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .navmargin {
+        margin-top: 54px;
+    }
+
+    .box {
+        display: flex;
+        flex-flow: column;
+        height: 100vh;
+    }
+
+    .box .content {
+        flex: 1 1 auto;
+    }
+
     .about-section {
         padding: 60px;
         background-color: #d3ccbf;
@@ -33,17 +69,6 @@
         padding: 10px;
         width: 1253px;
         height: auto;
-    }
-
-    footer {
-        position: absolute;
-        bottom: 0;
-        padding: 15px;
-        width: 100%;
-        height: 60px;
-        text-align: center;
-        background: #777;
-        color: white;
     }
 
     :root {
@@ -190,20 +215,8 @@
         text-transform: uppercase;
     }
 
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
     .heading.heading-icon {
         display: block;
-    }
-
-    .padding-lg {
-        display: block;
-        padding-top: 60px;
-        padding-bottom: 60px;
     }
 
     .practice-area.padding-lg {
