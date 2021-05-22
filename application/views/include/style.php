@@ -25,6 +25,10 @@
         list-style: none;
     }
 
+    #navbar {
+        transition: top 0.3s;
+    }
+
     .rcorner {
         border-radius: 10px;
     }
