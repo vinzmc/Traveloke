@@ -10,6 +10,6 @@ class NotFound extends CI_Controller
         $data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
         $data['footer'] = $this->load->view('template/footer', NULL, TRUE);
 
-        $this->load->view('pages/notfound', $data);
+        $this->load->view('errors/404', $data);
     }
 }
