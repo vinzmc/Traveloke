@@ -4,14 +4,15 @@
       public function __construct()  
       {  
          // Call the Model constructor  
-         parent::__construct();  
+         parent::__construct(); 
+         $this->load->database(); 
       }  
-      //we will use the select function  
-      public function select()  
+      
+      public function showData()  
       {  
          //data is retrive from this query  
-         $query = $this->db->get('SELECT * FROM hotel_list');  
-         return $query;
+         $query = $this->db->query('SELECT * FROM hotel_list');  
+         return $query->result_array();
       }  
    }  
 ?> 
