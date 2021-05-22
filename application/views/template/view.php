@@ -26,9 +26,9 @@
                     <!-- button book now -->
                     <form action="
                     <?php if (isset($_SESSION['name'])) {
-                        echo base_url("index.php/user");
+                        echo base_url("user");
                     } else {
-                        echo base_url("index.php/login");
+                        echo base_url("login");
                     } ?>
                     " method="POST">
                         <input type="submit" class="btn btn-primary" value="Book Now" <?= $room_state ?>></input>

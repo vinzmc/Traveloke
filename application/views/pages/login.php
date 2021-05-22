@@ -31,7 +31,7 @@
                                 unset($_SESSION['pesan']);
                             } ?>
 
-                            <form class="form-signin" method="post" action="<?= base_url("index.php/login/login_validation"); ?>">
+                            <form class="form-signin" method="post" action="<?= base_url("login/login_validation"); ?>">
                                 <div class="form-label-group">
                                     <input name="email" type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
                                     <label for="email">Email address</label>
@@ -50,7 +50,7 @@
                                 </div>
                                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
                                 <hr class="my-4">
-                                <a>Dont Have Account ? </a><a href="<?= base_url("index.php/register") ?>">Create Here !</a><br></br>
+                                <a>Dont Have Account ? </a><a href="<?= base_url("register") ?>">Create Here !</a><br></br>
                             </form>
                         </div>
                     </div>

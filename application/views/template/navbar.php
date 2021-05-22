@@ -18,13 +18,13 @@
 
                     <?php if (isset($_SESSION['name'])) { ?>
                         <?php if ($_SESSION['role_id'] == 2) { ?>
-                            <a class="nav-link" href="<?= base_url("index.php/admin"); ?>">
+                            <a class="nav-link" href="<?= base_url("admin"); ?>">
                             <?php } else { ?>
-                                <a class="nav-link" href="<?= base_url("index.php/user"); ?>">
+                                <a class="nav-link" href="<?= base_url("user"); ?>">
                                 <?php } ?>
                                 <?= $_SESSION['name']; ?>
                             <?php } else { ?>
-                                <a class="nav-link" href="<?= base_url("index.php/login"); ?>">
+                                <a class="nav-link" href="<?= base_url("login"); ?>">
                                 <?= "Guest";
                             } ?>
                                 </a>
@@ -40,15 +40,15 @@
                         <a class="nav-link" href="#">Booking Cart</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('index.php/about'); ?>">About Us</a>
+                        <a class="nav-link" href="<?= base_url('about'); ?>">About Us</a>
                     </li>
                     <?php if (isset($_SESSION['name'])) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('index.php/login/logout'); ?>">Logout</a>
+                            <a class="nav-link" href="<?= base_url('login/logout'); ?>">Logout</a>
                         </li>
                     <?php } else { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url("index.php/login") ?>">Login</a>
+                            <a class="nav-link" href="<?= base_url("login") ?>">Login</a>
                         </li>
                     <?php } ?>
                 </ul>

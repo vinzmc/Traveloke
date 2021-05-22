@@ -24,7 +24,7 @@
                                 echo '</div>';
                             }
                             ?>
-                            <form class="form-signin" action="<?php echo base_url(); ?>index.php/Regist/process">
+                            <form class="form-signin" action="<?php echo base_url(); ?>Regist/process">
                                 <div class="form-label-group">
                                     <input type="text" id="name" class="form-control">
                                     <label for="name">Name</label>

@@ -58,7 +58,7 @@
                 <!-- edit button personal -->
                 <div class="col-2">
                     <div class="row pl-2 pt-1">
-                        <a class="btn btn-secondary btn-sm" href="<?= base_url('index.php/user/personalize'); ?>" role="button" style="width: 145px;">
+                        <a class="btn btn-secondary btn-sm" href="<?= base_url('user/personalize'); ?>" role="button" style="width: 145px;">
                             Edit
                         </a>
                     </div>
@@ -101,7 +101,7 @@
                 <!-- edit button security -->
                 <div class="col-2">
                     <div class="row pl-2 pt-1">
-                        <a class="btn btn-secondary btn-sm" href="<?= base_url('index.php/user/security'); ?>" role="button" style="width: 145px;">
+                        <a class="btn btn-secondary btn-sm" href="<?= base_url('user/security'); ?>" role="button" style="width: 145px;">
                             Edit
                         </a>
                     </div>
