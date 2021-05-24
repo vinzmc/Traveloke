@@ -6,6 +6,7 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if($this->session->userdata('role_id')!=2) redirect();//admin only
 		$this->load->model('admin_model');
 	}
 
@@ -18,8 +19,8 @@ class Admin extends CI_Controller
 		$data['tableCSS'] = $this->load->view('datatables/style', NULL, TRUE);
 		$data['tableJS'] = $this->load->view('datatables/script', NULL, TRUE);
 		$temp['dbdata'] = $this->admin_model->getUser();
-		$data['table'] = $this->load->view('datatables/user', $temp, TRUE);
-
+		$data['user'] = $this->load->view('datatables/user', $temp, TRUE);
+		
 		$this->load->view('pages/admin', $data);
 		if (isset($_SESSION['error'])) {
 			unset($_SESSION['error']);
@@ -88,7 +89,7 @@ class Admin extends CI_Controller
 
 	public function new_user()
 	{
-		$this->form_rules();
+		$this->Userform_rules();
 		$this->load->model('register_model');
 		$_POST['password'] = $this->generateRandomString();
 		$result = $this->form_validation->run();
@@ -121,7 +122,7 @@ class Admin extends CI_Controller
 		return $randomString;
 	}
 
-	public function form_rules()
+	public function Userform_rules()
 	{
 		$this->form_validation->set_rules(
 			'name',

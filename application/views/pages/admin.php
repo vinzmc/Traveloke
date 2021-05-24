@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
+    <title>Database Administrator</title>
+    <link rel="icon" href="<?=base_url()?>/favicon.svg" type="image/gif">
     <?php echo $style ?>
     <?= $tableCSS ?>
 </head>
@@ -13,9 +14,8 @@
 <body>
     <div class="box">
         <?php echo $navbar; ?>
-        <div class="container-fluid content navmargin bg-light">
-
-            <nav>
+        <div class="container-fluid content navmargin">
+            <nav class="mt-1">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link font-weight-bold active" style="color: #5D5C61;" id="nav-user-tab" data-toggle="tab" href="#nav-user" role="tab" aria-controls="nav-user" aria-selected="true">User DB</a>
                     <a class="nav-item nav-link font-weight-bold" style="color: #5D5C61;" id="nav-hotel-tab" data-toggle="tab" href="#nav-hotel" role="tab" aria-controls="nav-hotel" aria-selected="false">Hotel DB</a>
@@ -42,7 +42,7 @@
                     ?>
                     <!-- content -->
                     <div class="container-fluid">
-                        <?= $table ?>
+                        <?= $user ?>
                     </div>
                     <!-- content limit -->
                 </div>
