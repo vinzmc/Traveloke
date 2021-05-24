@@ -13,7 +13,7 @@
 <body>
     <div class="box" style="background-color: #EDF9FF;">
         <?php echo $navbar; ?>
-        <div class="container content navmargin" style="background-color: white;">
+        <div class="container-fluid content navmargin" style="background-color: white;">
             <div class="row h-100 no-gutters mt-1">
                 <div class="align-self-center col-lg-2 border border-secondary w-100 " style=" font-weight:500; border-radius:10px">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="col ml-2 mb-2 border border-secondary" style="border-radius:10px">
-                    <h6 class="text-center">Table</h6>
+                    <h6 class="text-center mt-1" id="title">Table</h6>
                     <!-- content -->
                     <div class="container-fluid">
                         <?= $table ?>
