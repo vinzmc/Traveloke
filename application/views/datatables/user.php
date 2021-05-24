@@ -82,12 +82,15 @@
                 </td>
                 <!-- option -->
                 <td>
+                    <a class="btn btn-secondary mb-1 mt-1 <?php if ($row['role_id'] == 2) {
+                                                                echo 'disabled';
+                                                            } ?>" href="<?= base_url('admin/reset_password/' . $row['user_id'] . '/' . $row['role_id']) ?>" onclick="return confirm('Are you sure you want to reset <?= $row['name'] ?> password?');"> Reset Password</a>
                     <input class="btn btn-warning mb-1 mt-1" type="submit" value="Update" <?php if ($row['role_id'] == 2) {
                                                                                                 echo 'disabled';
                                                                                             } ?>></input>
                     <a class="btn btn-danger mb-1 mt-1 <?php if ($row['role_id'] == 2) {
                                                             echo 'disabled';
-                                                        } ?>" href="<?= base_url('admin/delete_user/' . $row['user_id'] . '/' . $row['role_id'] . '/' . $row['picture']) ?>" onclick="return confirm('Are you sure you want to delete this item?');"> Delete</a>
+                                                        } ?>" href="<?= base_url('admin/delete_user/' . $row['user_id'] . '/' . $row['role_id'] . '/' . $row['picture']) ?>" onclick="return confirm('Are you sure you want to delete <?= $row['name'] ?> user account?');"> Delete</a>
                 </td>
                 <?php echo form_close(); ?>
             </tr>

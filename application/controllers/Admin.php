@@ -66,8 +66,22 @@ class Admin extends CI_Controller
 	{
 		if ($role == 2) {
 			$this->session->set_flashdata('error', 'Data Admin tidak dapat diubah melalui web!');
-		} else {//
+		} else {
+			
+		}
+		redirect('admin');
+	}
 
+	public function reset_password($uid, $role)
+	{
+		if ($role == 2) {
+			$this->session->set_flashdata('error', 'Data Admin tidak dapat diubah melalui web!');
+		} else {
+			$temppass = $this->generateRandomString();
+			$this->session->set_flashdata('msg', 'Password User baru adalah : ' . $temppass);
+			$this->db->set('password', hash("sha256", $temppass));
+			$this->db->where('user_id', $uid);
+			$this->db->update('user_login');
 		}
 		redirect('admin');
 	}
@@ -94,6 +108,7 @@ class Admin extends CI_Controller
 		}
 		redirect('admin');
 	}
+
 	//untuk password sementara
 	function generateRandomString($length = 10)
 	{

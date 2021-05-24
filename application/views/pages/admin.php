@@ -14,16 +14,18 @@
     <div class="box">
         <?php echo $navbar; ?>
         <div class="container-fluid content navmargin bg-light">
-            <div class="row h-100 no-gutters mt-1">
-                <div class="align-self-center col-lg-1 border border-secondary w-100" style=" font-weight:500; border-radius:10px">
-                    <div class="nav flex-column nav-pills bg-white" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">User DB</a>
-                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Hotel DB</a>
-                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Profile</a>
-                    </div>
+
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link font-weight-bold active" style="color: #5D5C61;" id="nav-user-tab" data-toggle="tab" href="#nav-user" role="tab" aria-controls="nav-user" aria-selected="true">User DB</a>
+                    <a class="nav-item nav-link font-weight-bold" style="color: #5D5C61;" id="nav-hotel-tab" data-toggle="tab" href="#nav-hotel" role="tab" aria-controls="nav-hotel" aria-selected="false">Hotel DB</a>
+                    <a class="nav-item nav-link font-weight-bold" style="color: #5D5C61;" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
                 </div>
-                <div class="col ml-2 mb-2 border border-secondary bg-white" style="border-radius:10px">
-                    <h6 class="text-center mt-1" id="title">Table</h6>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <!-- user -->
+                <div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+                    <h5 class="text-center mt-3">User Database</h5>
                     <?php
                     if ($this->session->flashdata('error') != '') {
                         echo '<div class="container alert alert-danger text-center font-weight-bold" role="alert">';
@@ -44,7 +46,17 @@
                     </div>
                     <!-- content limit -->
                 </div>
+                <!-- hotel -->
+                <div class="tab-pane fade" id="nav-hotel" role="tabpanel" aria-labelledby="nav-hotel-tab">
+                    b
+                </div>
+                <!-- profile -->
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    c
+                </div>
             </div>
+
+
         </div>
         <?php echo $footer; ?>
     </div>
