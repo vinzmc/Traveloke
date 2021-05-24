@@ -11,7 +11,6 @@ class Admin extends CI_Controller
     
     public function index()
 	{
-
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
 		$data['script'] = $this->load->view('include/script', NULL, TRUE);
 		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
@@ -22,5 +21,15 @@ class Admin extends CI_Controller
 		$data['table'] = $this->load->view('datatables/user', $temp, TRUE);
 
 		$this->load->view('pages/admin', $data);
+	}
+
+	public function update_user(){
+		echo var_dump($_POST);
+		//$this->session->set_flashdata($this->admin_model->updateUser($_POST));
+		//redirect();
+	}
+
+	public function deleteU(){
+
 	}
 }

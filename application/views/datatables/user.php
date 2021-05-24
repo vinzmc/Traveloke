@@ -14,61 +14,76 @@
         <?php foreach ($dbdata as $row) { ?>
             <tr>
                 <form method="POST" action="<?= base_url('admin/update_user/'); ?>" id="<?= $row['user_id'] ?>">
+                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
                     <td><?= $row['user_id'] ?></td>
                     <td>
-                        <input class="form-control" type="text" name="name" value="<?= $row['name'] ?>" disabled></input>
+                        <div hidden>
+                            <?= $row['name'] ?>
+                        </div>
+                        <input class="form-control" type="text" name="name" value="<?= $row['name'] ?>" required></input>
                     </td>
                     <td>
-                        <input class="form-control" type="email" name="email" value="<?= $row['email'] ?>" disabled></input>
+                        <div hidden>
+                            <?= $row['email'] ?>
+                        </div>
+                        <input class="form-control" type="email" name="email" value="<?= $row['email'] ?>" required></input>
                     </td>
                     <td>
-                        <input class="form-control" type="date" name="date" value="<?= $row['date'] ?>" disabled></input>
+                        <div hidden>
+                            <?= $row['date'] ?>
+                        </div>
+                        <input class="form-control" type="date" name="date" value="<?= $row['date'] ?>" required></input>
                     </td>
                     <td>
-                        <input class="form-control" type="text" name="phone" value="<?= $row['phone'] ?>" disabled></input>
+                        <div hidden>
+                            <?= $row['phone'] ?>
+                        </div>
+                        <input class="form-control" type="text" name="phone" value="<?= $row['phone'] ?>" required></input>
                     </td>
                     <td>
-                        <select class="form-control" name="roleid">
-                            <option value="2" <?php if ($row['role_id'] == 2) {
-                                                    echo 'selected="selected"';
-                                                } ?>>Admin</option>
+                        <div hidden>
+                            <?php if ($row['role_id'] == 1) {
+                                echo 'User';
+                            }else echo 'Admin'; ?>
+                        </div>
+                        <select class="form-control" name="role_id">
                             <option value="1" <?php if ($row['role_id'] == 1) {
                                                     echo 'selected="selected"';
                                                 } ?>>User</option>
+                            <option value="2" <?php if ($row['role_id'] == 2) {
+                                                    echo 'selected="selected"';
+                                                } ?>>Admin</option>
                         </select>
                     </td>
                     <td>
-                        <button class="btn btn-secondary" id="edit">Edit</button>
-                        <div id="hiddenbutton" hidden>
-                            <input class="btn btn-info" type="submit" value="Save Update"></input>
-                            <button class="btn btn-secondary">Cancel</button>
-                        </div>
+                        <input class="btn btn-warning" type="submit" value="Update"></input>
                         <a class="btn btn-danger" href="<?= base_url('admin/delete_user/' . $row['user_id']) ?>"> Delete</a>
                     </td>
                 </form>
             </tr>
-
         <?php } ?>
-        <!-- new user -->
+    </tbody>
+    <!-- new user -->
+    <tfoot>
         <tr>
             <form method="POST" action="<?= base_url('admin/new_user'); ?>">
                 <td>X</td>
                 <td>
-                    <input class="form-control" type="text" name="name"></input>
+                    <input class="form-control" type="text" name="name" required></input>
                 </td>
                 <td>
-                    <input class="form-control" type="email" name="email"></input>
+                    <input class="form-control" type="email" name="email" required></input>
                 </td>
                 <td>
-                    <input class="form-control" type="date" name="date"></input>
+                    <input class="form-control" type="date" name="date" required></input>
                 </td>
                 <td>
-                    <input class="form-control" type="text" name="phone"></input>
+                    <input class="form-control" type="text" name="phone" required></input>
                 </td>
                 <td>
-                    <select class="form-control" id="exampleFormControlSelect1" name="roleid">
-                        <option value="2">Admin</option>
+                    <select class="form-control" id="exampleFormControlSelect1" name="role_id" required>
                         <option value="1">User</option>
+                        <option value="2">Admin</option>
                     </select>
                 </td>
                 <td>
@@ -76,16 +91,13 @@
                 </td>
             </form>
         </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
-            <th>Option</th>
-        </tr>
     </tfoot>
+
 </table>
+<script>
+    $(document).ready(function() {
+        $("#edit1").click(function() {
+            alert("The paragraph was clicked.");
+        });
+    });
+</script>
