@@ -32,6 +32,7 @@
                             } ?>
 
                             <form class="form-signin" method="post" action="<?= base_url("login/login_validation"); ?>">
+                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
                                 <div class="form-label-group">
                                     <input name="email" type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
                                     <label for="email">Email address</label>

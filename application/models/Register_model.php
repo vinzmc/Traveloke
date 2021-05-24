@@ -12,12 +12,13 @@ class Register_model extends CI_Model
 		$data_user = array(
 			'name'=>$name,
             'email'=>$email,
-			'password'=>password_hash($password,PASSWORD_DEFAULT),
+			'password'=>hash ( "sha256", $password ),
 			'date'=>$date,
             'phone'=>$phone,
-            'picture'=>$picture
+            'picture'=>$picture,
+			'role_id' => 1
 		);
-		$this->db->insert('tb_user',$data_user);
+		$this->db->insert('user_login',$data_user);
 	}
 }
 ?>

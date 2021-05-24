@@ -76,6 +76,7 @@ return array(
 	'gif'	=>	'image/gif',
 	'jpeg'	=>	array('image/jpeg', 'image/pjpeg'),
 	'jpg'	=>	array('image/jpeg', 'image/pjpeg'),
+	'jfif'  =>  array('image/jpeg', 'image/pjpeg'),
 	'jpe'	=>	array('image/jpeg', 'image/pjpeg'),
 	'jp2'	=>	array('image/jp2', 'video/mj2', 'image/jpx', 'image/jpm'),
 	'j2k'	=>	array('image/jp2', 'video/mj2', 'image/jpx', 'image/jpm'),
