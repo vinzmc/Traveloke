@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2021 at 02:07 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- Generation Time: May 24, 2021 at 10:29 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,21 +34,21 @@ CREATE TABLE `hotel_list` (
   `hotel-price` int(11) NOT NULL,
   `hotel-stock` int(11) NOT NULL,
   `hotel-photo` varchar(200) NOT NULL,
-  `rating` int(11) NOT NULL
+  `star` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hotel_list`
 --
 
-INSERT INTO `hotel_list` (`hotel-id`, `hotel-name`, `hotel-address`, `hotel-price`, `hotel-stock`, `hotel-photo`, `rating`) VALUES
-(1, 'Hotel Astoen', 'Bandung', 1500000, 0, 'aston.jpg', 5),
-(2, 'Hotel Trans', 'Bandung', 2400000, 75, 'trans.jpg', 4),
+INSERT INTO `hotel_list` (`hotel-id`, `hotel-name`, `hotel-address`, `hotel-price`, `hotel-stock`, `hotel-photo`, `star`) VALUES
+(1, 'Hotel Astoen', 'Bandung', 1500000, 56, 'aston.jpg', 5),
+(2, 'Hotel Trans', 'Bandung', 2400000, 75, 'trans.jpg', 2),
 (3, 'Four Seasons Resort', 'Jimbaran', 3000000, 86, 'jimbaran.jpg', 5),
-(4, 'Akhyana Village', 'Jimbaran ', 2600000, 46, 'akhyana.jpg', 5),
+(4, 'Akhyana Village', 'Jimbaran ', 2600000, 46, 'akhyana.jpg', 3),
 (5, 'Ascott Waterplace Surabaya', 'Surabaya', 1190000, 86, 'ascot.jpg', 4),
-(6, 'DoubleTree by Hilton', 'Surabaya', 1210000, 89, 'doubletree.jpg', 5),
-(7, 'Grand City Hall Medan', 'Medan', 730000, 23, 'grand.jpg', 4),
+(6, 'DoubleTree by Hilton Surabaya', 'Surabaya', 1210000, 89, 'doubletree.jpg', 5),
+(7, 'Grand City Hall Medan', 'Medan', 730000, 23, 'grand.jpg', 1),
 (8, 'Cambridge Hotel Medan', 'Medan', 860000, 24, 'cambridge.jpg', 4);
 
 -- --------------------------------------------------------
