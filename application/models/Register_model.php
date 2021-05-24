@@ -7,6 +7,15 @@ class Register_model extends CI_Model
 		parent::__construct();
 	}
 
+	public function oldUser($email){
+		$query = $this->db->get_where('user_login', array('email' => $email));
+		$query = $query->num_rows();
+		if($query==0){
+			return TRUE;
+		}else
+			return FALSE;
+	}
+
 	public function newUser($saved_file_name)
 	{
 		$name = $this->input->post('name');

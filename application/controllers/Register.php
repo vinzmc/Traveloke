@@ -20,15 +20,22 @@ class Register extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('pages/register', $data);
         } else {
-            $uploadlog = $this->register_model->register(NULL);
-            if (is_null($uploadlog)) {
-                redirect('login');
-            } else {
-                $this->session->set_flashdata('error', $uploadlog);
-                redirect('register');
+            if ($this->register_model->oldUser($_POST['email'])) {
+                $uploadlog = $this->register_model->register(NULL);
+                if (is_null($uploadlog)) {
+                    redirect('login');
+                } else {
+                    $this->session->set_flashdata('error', $uploadlog);
+                    redirect('register');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Email sudah digunakan');
+                $this->load->view('pages/register', $data);
             }
         }
-        unset($_SESSION['error']);
+        if(isset($_SESSION['error'])){
+			unset($_SESSION['error']);
+		}
     }
 
     public function form_rules()

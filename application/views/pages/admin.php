@@ -11,19 +11,33 @@
 </head>
 
 <body>
-    <div class="box" style="background-color: #EDF9FF;">
+    <div class="box">
         <?php echo $navbar; ?>
-        <div class="container-fluid content navmargin" style="background-color: white;">
+        <div class="container-fluid content navmargin bg-light">
             <div class="row h-100 no-gutters mt-1">
-                <div class="align-self-center col-lg-1 border border-secondary w-100 " style=" font-weight:500; border-radius:10px">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="align-self-center col-lg-1 border border-secondary w-100" style=" font-weight:500; border-radius:10px">
+                    <div class="nav flex-column nav-pills bg-white" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">User DB</a>
                         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Hotel DB</a>
                         <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Profile</a>
                     </div>
                 </div>
-                <div class="col ml-2 mb-2 border border-secondary" style="border-radius:10px">
+                <div class="col ml-2 mb-2 border border-secondary bg-white" style="border-radius:10px">
                     <h6 class="text-center mt-1" id="title">Table</h6>
+                    <?php
+                    if ($this->session->flashdata('error') != '') {
+                        echo '<div class="container alert alert-danger text-center font-weight-bold" role="alert">';
+                        echo $this->session->flashdata('error');
+                        echo '</div>';
+                    }
+                    ?>
+                    <?php
+                    if ($this->session->flashdata('msg') != '') {
+                        echo '<div class="container alert alert-success text-center font-weight-bold" role="alert">';
+                        echo $this->session->flashdata('msg');
+                        echo '</div>';
+                    }
+                    ?>
                     <!-- content -->
                     <div class="container-fluid">
                         <?= $table ?>

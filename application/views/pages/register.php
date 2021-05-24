@@ -31,8 +31,9 @@
                                 echo '</div>';
                             }
                             ?>
-                            <?php echo validation_errors(); ?>
                             <?php echo form_open_multipart('register'); ?>
+                            <!-- csrf token -->
+                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <div class="form-label-group">
                                 <input type="text" id="name" name="name" class="form-control">
                                 <label for="name">Name</label>
@@ -67,8 +68,8 @@
                                 <?= form_error('userfile'); ?>
                                 <label for="img">Photo</label>
                             </div>
-                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                            <input type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" value="Sign Up"></button>
+                            
+                            <input type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" value="Sign Up"></input>
                             <?php echo form_close(); ?>
                         </div>
                     </div>

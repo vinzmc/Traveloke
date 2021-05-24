@@ -17,6 +17,7 @@
                 <div class="col-7"></div>
                 <div class="col-4">
                     <form action="#" method="POST">
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <div class="input-group input-group-sm mb-3">
                             <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                             <div class="input-group-append">
