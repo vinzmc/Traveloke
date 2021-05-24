@@ -15,7 +15,7 @@
         <?php echo $navbar; ?>
         <div class="container-fluid content navmargin" style="background-color: white;">
             <div class="row h-100 no-gutters mt-1">
-                <div class="align-self-center col-lg-2 border border-secondary w-100 " style=" font-weight:500; border-radius:10px">
+                <div class="align-self-center col-lg-1 border border-secondary w-100 " style=" font-weight:500; border-radius:10px">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">User DB</a>
                         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Hotel DB</a>

@@ -7,6 +7,7 @@
             <th>Date Created</th>
             <th>Phone Number</th>
             <th>Account Type</th>
+            <th>Profile Picture</th>
             <th>Options</th>
         </tr>
     </thead>
@@ -14,7 +15,7 @@
         <?php foreach ($dbdata as $row) { ?>
             <tr>
                 <form method="POST" action="<?= base_url('admin/update_user/'); ?>" id="<?= $row['user_id'] ?>">
-                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                     <td><?= $row['user_id'] ?></td>
                     <td>
                         <div hidden>
@@ -44,7 +45,7 @@
                         <div hidden>
                             <?php if ($row['role_id'] == 1) {
                                 echo 'User';
-                            }else echo 'Admin'; ?>
+                            } else echo 'Admin'; ?>
                         </div>
                         <select class="form-control" name="role_id">
                             <option value="1" <?php if ($row['role_id'] == 1) {
@@ -56,8 +57,15 @@
                         </select>
                     </td>
                     <td>
-                        <input class="btn btn-warning" type="submit" value="Update"></input>
-                        <a class="btn btn-danger" href="<?= base_url('admin/delete_user/' . $row['user_id']) ?>"> Delete</a>
+                        <div hidden>
+                            <?= $row['phone'] ?>
+                        </div>
+                        <a class="btn btn-info mb-1 mt-1" href="<?= base_url('admin/update_picture/' . $row['user_id']) ?>"> Edit</a>
+                    </td>
+                    <input type="hidden" value="<?= $row['picture'] ?>" name="dir">
+                    <td>
+                        <input class="btn btn-warning mb-1 mt-1" type="submit" value="Update"></input>
+                        <a class="btn btn-danger mb-1 mt-1" href="<?= base_url('admin/delete_user/' . $row['user_id']) ?>"> Delete</a>
                     </td>
                 </form>
             </tr>
@@ -67,7 +75,7 @@
     <tfoot>
         <tr>
             <form method="POST" action="<?= base_url('admin/new_user'); ?>">
-                <td>X</td>
+                <td>#</td>
                 <td>
                     <input class="form-control" type="text" name="name" required></input>
                 </td>
@@ -85,6 +93,9 @@
                         <option value="1">User</option>
                         <option value="2">Admin</option>
                     </select>
+                </td>
+                <td>
+                    <input class="form-control" type="file" name="userfile" required></input>
                 </td>
                 <td>
                     <input class="btn btn-success" type="submit" value="New User"></input>
