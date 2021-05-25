@@ -15,12 +15,14 @@
         <?php echo $navbar; ?>
         <div class="container content navmargin" style="padding: 20px;">
             <div class="row">
-                <div class="col-7"></div>
+                <div class="col-7">
+                    
+                </div>
                 <div class="col-4">
                     <form action="<?= base_url()?>" method="POST">
                     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <div class="input-group input-group-sm mb-3">
-                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="keyword" required placeholder="Search...">
+                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="keyword" required placeholder="Search Hotel Name, Location ...">
                             <div class="input-group-append">
                                 <button class="button btn btn-secondary" type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
