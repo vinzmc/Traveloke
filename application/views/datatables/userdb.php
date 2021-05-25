@@ -78,6 +78,9 @@
                     <a class="btn btn-info mb-1 mt-1 <?php if ($row['role_id'] == 2) {
                                                             echo 'disabled';
                                                         } ?>" href="<?= base_url('admin/update_picture/' . $row['user_id'] . '/' . $row['role_id']) ?>"> Edit</a>
+                    <a class="btn btn-danger mb-1 mt-1 <?php if ($row['role_id'] == 2 || strcmp($row['picture'], 'assets/images/defaultprofile.png') == 0) {
+                                                            echo 'disabled';
+                                                        } ?>" href="<?= base_url('admin/delete_picture/' . $row['user_id'] . '/' . $row['role_id'] . '/' . $row['picture']) ?>">Reset</a>
                     <?= str_replace("assets/images/", "", $row['picture']); ?>
                 </td>
                 <!-- option -->
@@ -126,7 +129,7 @@
             <?php echo form_error('role_id'); ?>
         </td>
         <td style="min-width:15em; max-width:16.5em">
-            <input class="form-control" type="file" name="userfile" ></input>
+            <input class="form-control" type="file" name="userfile"></input>
         </td>
         <td>
             <input type="submit" class="btn btn-success" value="New User"></input>

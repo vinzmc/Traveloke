@@ -6,8 +6,8 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		if(!isset($_SESSION['role_id'])) redirect();
-		if($_SESSION['role_id']!=2) redirect();//admin only
+		if (!isset($_SESSION['role_id'])) redirect();
+		if ($_SESSION['role_id'] != 2) redirect(); //admin only
 		$this->load->model('admin_model');
 	}
 
@@ -21,7 +21,7 @@ class Admin extends CI_Controller
 		$data['tableJS'] = $this->load->view('datatables/script', NULL, TRUE);
 		$temp['dbdata'] = $this->admin_model->getUser();
 		$data['user'] = $this->load->view('datatables/userdb', $temp, TRUE);
-		
+
 		$this->load->view('pages/admin', $data);
 		if (isset($_SESSION['error'])) {
 			unset($_SESSION['error']);
@@ -47,21 +47,21 @@ class Admin extends CI_Controller
 		redirect('admin');
 	}
 
-	public function delete_user($uid, $role, $dir1, $dir2, $dir3)
+	public function delete_user($uid, $role, $path, $subpath, $file)
 	{
 		if ($role == 2) {
 			$this->session->set_flashdata('error', 'Data Admin tidak dapat diubah melalui web!');
 		} else {
 			$this->db->where('user_id', $uid);
 			$this->db->delete('user_login');
-			
-			$deldir = realpath(APPPATH . '../' . $dir1 . '/' . $dir2 . '/' . $dir3);//hack
-			if (file_exists($deldir)) {
-				if(!strcmp($deldir, 'assets/images/defaultprofile.png')){
+
+			if (strcmp('defaultprofile.png', $file) != 0) {
+				$deldir = realpath(APPPATH . '../' . $path . '/' . $subpath . '/' . $file); //hack
+				if (file_exists($deldir)) {
 					unlink($deldir);
 				}
+				unset($deldir);
 			}
-			unset($deldir);
 		}
 		redirect('admin');
 	}
@@ -71,7 +71,25 @@ class Admin extends CI_Controller
 		if ($role == 2) {
 			$this->session->set_flashdata('error', 'Data Admin tidak dapat diubah melalui web!');
 		} else {
-			
+		}
+		redirect('admin');
+	}
+
+	public function delete_picture($uid, $role, $path, $subpath, $file)
+	{
+		if ($role == 2) {
+			$this->session->set_flashdata('error', 'Data Admin tidak dapat diubah melalui web!');
+		} else {
+			if (strcmp('defaultprofile.png', $file) != 0) {
+				$deldir = realpath(APPPATH . '../' . $path . '/' . $subpath . '/' . $file); //hack
+				if (file_exists($deldir)) {
+					unlink($deldir);
+				}
+				unset($deldir);
+				$this->db->set('picture', 'assets/images/defaultprofile.png');
+				$this->db->where('user_id', $uid);
+				$this->db->update('user_login');
+			}
 		}
 		redirect('admin');
 	}

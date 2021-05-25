@@ -57,6 +57,7 @@
                 <!-- hotel -->
                 <div class="tab-pane fade" id="nav-hotel" role="tabpanel" aria-labelledby="nav-hotel-tab">
                     <h5 class="text-center mt-3">Hotel Database</h5>
+                    <?= realpath(APPPATH . '../');?>
                 </div>
                 <!-- profile -->
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
