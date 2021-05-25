@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traveloke</title>
-    <link rel="icon" href="<?=base_url()?>/favicon.svg" type="image/gif">
+    <link rel="icon" href="<?= base_url() ?>/favicon.svg" type="image/gif">
 </head>
 
 <body>
@@ -16,11 +16,34 @@
         <div class="container content navmargin" style="padding: 20px;">
             <div class="row">
                 <div class="col-7">
-                    
+                    <form action="<?= base_url() ?>" method="POST">
+                        <select class="form-select" aria-label="Default select example" style="width: 150px;">
+                            <option selected>Star</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                            <option value="4">Four</option>
+                            <option value="5">Five</option>
+                        </select>
+                    </form>
                 </div>
+
+                <div class="col-7">
+                    <form action="<?= base_url() ?>" method="POST">
+                        <select class="form-select" aria-label="Default select example" style="width: 150px;">
+                            <option selected>Price</option>
+                            <option value="1">0 - Rp 500.000</option>
+                            <option value="2">Rp 500.001 - Rp 1.000.000 </option>
+                            <option value="3">Rp 1.000.001 - Rp 1.500.000</option>
+                            <option value="4">Rp 1.500.001 - Rp 2.000.000</option>
+                            <option value="5">Rp 2.000.001+</option>
+                        </select>
+                    </form>
+                </div>
+
                 <div class="col-4">
-                    <form action="<?= base_url()?>" method="POST">
-                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                    <form action="<?= base_url() ?>" method="POST">
+                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <div class="input-group input-group-sm mb-3">
                             <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="keyword" required placeholder="Search Hotel Name, Location ...">
                             <div class="input-group-append">

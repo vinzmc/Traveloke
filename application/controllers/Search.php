@@ -16,10 +16,4 @@ class Search extends CI_Controller
 
         $this->load->view('pages/home', $data);
     }
-
-    public function result()
-    {
-        $data['search'] = $this->search_data->search();
-        $this->load->view('search', $data);
-    }
 }
