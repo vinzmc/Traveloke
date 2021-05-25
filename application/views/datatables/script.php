@@ -2,6 +2,12 @@
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#user').DataTable();
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#hotel').DataTable();
     });
 </script>

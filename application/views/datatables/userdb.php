@@ -1,4 +1,4 @@
-<table id="example" class="display" style="width:100%;">
+<table id="user" class="display" style="width:100%;">
     <thead>
         <tr>
             <th>ID</th>
@@ -17,6 +17,7 @@
                 <?= form_open('admin/update_user/' . $row['user_id'] . '/' . $row['role_id']); ?>
                 <!-- csrf token -->
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                <input type="hidden" name="tab" value="1"></input>
                 <!-- id -->
                 <td><?= $row['user_id'] ?></td>
                 <!-- name -->
@@ -51,7 +52,7 @@
                     <div hidden>
                         <?= $row['phone'] ?>
                     </div>
-                    <input class="form-control" type="text" name="phone" value="<?= $row['phone'] ?>" required <?php if ($row['role_id'] == 2) {
+                    <input class="form-control" type="text" name="phone" value="<?= $row['phone'] ?>" maxlength="12" required <?php if ($row['role_id'] == 2) {
                                                                                                                     echo 'disabled';
                                                                                                                 } ?>></input>
                 </td>
@@ -104,13 +105,14 @@
         <?= form_open_multipart('admin/new_user'); ?>
         <!-- csrf token -->
         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+        <input type="hidden" name="tab" value="1"></input>
         <td>#</td>
         <td>
-            <input class="form-control" type="text" name="name" required></input>
+            <input class="form-control" type="text" name="name" placeholder="Full Name" required></input>
             <?php echo form_error('name'); ?>
         </td>
         <td>
-            <input class="form-control" type="email" name="email" required></input>
+            <input class="form-control" type="email" name="email" placeholder="email@domain.com" required></input>
             <?php echo form_error('email'); ?>
         </td>
         <td>
@@ -118,7 +120,7 @@
             <?php echo form_error('date'); ?>
         </td>
         <td>
-            <input class="form-control" type="text" name="phone" required></input>
+            <input class="form-control" type="text" name="phone" placeholder='08...' maxlength="12" required></input>
             <?php echo form_error('phone'); ?>
         </td>
         <td>

@@ -20,7 +20,9 @@ class Admin extends CI_Controller
 		$data['tableCSS'] = $this->load->view('datatables/style', NULL, TRUE);
 		$data['tableJS'] = $this->load->view('datatables/script', NULL, TRUE);
 		$temp['dbdata'] = $this->admin_model->getUser();
+		$temp['hoteldb'] = $this->admin_model->getHotel();
 		$data['user'] = $this->load->view('datatables/userdb', $temp, TRUE);
+		$data['hotel'] = $this->load->view('datatables/hoteldb', $temp, TRUE);
 
 		$this->load->view('pages/admin', $data);
 		if (isset($_SESSION['error'])) {
