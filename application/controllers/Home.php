@@ -10,7 +10,12 @@ class Home extends CI_Controller {
 
 	 public function index()
 	{
-		$hotel['data'] = $this->view_data->showData();
+		if(isset( $_POST['keyword'])){
+			$keyword = $_POST['keyword'];
+		}else{
+			$keyword = '';
+		}
+		$hotel['data'] = $this->view_data->showData($keyword);
 
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
 		$data['script'] = $this->load->view('include/script', NULL, TRUE);
