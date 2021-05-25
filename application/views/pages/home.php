@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traveloke</title>
-    <link rel="icon" href="<?=base_url()?>/favicon.svg" type="image/gif">
+    <link rel="icon" href="<?= base_url() ?>/favicon.svg" type="image/gif">
 </head>
 
 <body>
@@ -15,10 +15,12 @@
         <?php echo $navbar; ?>
         <div class="container content navmargin" style="padding: 20px;">
             <div class="row">
-                <div class="col-7"></div>
+                <div class="col-7">
+                    
+                </div>
                 <div class="col-4">
                     <form action="#" method="POST">
-                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <div class="input-group input-group-sm mb-3">
                             <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                             <div class="input-group-append">
