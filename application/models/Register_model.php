@@ -7,12 +7,13 @@ class Register_model extends CI_Model
 		parent::__construct();
 	}
 
-	public function oldUser($email){
+	public function oldUser($email)
+	{
 		$query = $this->db->get_where('user_login', array('email' => $email));
 		$query = $query->num_rows();
-		if($query==0){
+		if ($query == 0) {
 			return TRUE;
-		}else
+		} else
 			return FALSE;
 	}
 
@@ -23,9 +24,9 @@ class Register_model extends CI_Model
 		$password = $this->input->post('password');
 		$date = $this->input->post('date');
 		$phone = $this->input->post('phone');
-		if(isset($_POST['role_id'])){
+		if (isset($_POST['role_id'])) {
 			$role = $this->input->post('role_id'); // user atau admin
-		}else{
+		} else {
 			$role = 1; // user
 		}
 		$data_user = array(
@@ -54,14 +55,22 @@ class Register_model extends CI_Model
 
 		$this->load->library('upload', $config);
 
-		if (!$this->upload->do_upload('userfile')) {
+		if (!$this->upload->do_upload('userfile')) { //error checking
 			$data = $this->upload->display_errors();
-			return $data;
+			//String case sensitive jangan diganti/dirapihin
+			if (strcmp($data, "
+			You did not select a file to upload.
+			
+			")){//kalo ga ada file
+				$data = NULL;
+				$saved_file_name = 'assets/images/defaultprofile.png'; //profile picture default
+			}else{
+				return $data;
+			}
 		} else {
 			$data = NULL;
+			$saved_file_name = 'assets/images/' . $this->upload->data('file_name'); //filename.ext
 		}
-
-		$saved_file_name = 'assets/images/' . $this->upload->data('file_name'); //filename.ext
 
 		//insert
 		if (is_null($uid)) {

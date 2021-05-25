@@ -6,7 +6,8 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('role_id')!=2) redirect();//admin only
+		if(!isset($_SESSION['role_id'])) redirect();
+		if($_SESSION['role_id']!=2) redirect();//admin only
 		$this->load->model('admin_model');
 	}
 
@@ -19,7 +20,7 @@ class Admin extends CI_Controller
 		$data['tableCSS'] = $this->load->view('datatables/style', NULL, TRUE);
 		$data['tableJS'] = $this->load->view('datatables/script', NULL, TRUE);
 		$temp['dbdata'] = $this->admin_model->getUser();
-		$data['user'] = $this->load->view('datatables/user', $temp, TRUE);
+		$data['user'] = $this->load->view('datatables/userdb', $temp, TRUE);
 		
 		$this->load->view('pages/admin', $data);
 		if (isset($_SESSION['error'])) {
@@ -56,7 +57,9 @@ class Admin extends CI_Controller
 			
 			$deldir = realpath(APPPATH . '../' . $dir1 . '/' . $dir2 . '/' . $dir3);//hack
 			if (file_exists($deldir)) {
-				unlink($deldir);
+				if(!strcmp($deldir, 'assets/images/defaultprofile.png')){
+					unlink($deldir);
+				}
 			}
 			unset($deldir);
 		}

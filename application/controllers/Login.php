@@ -11,6 +11,7 @@ class Login extends CI_Controller
 
     public function index()
     {
+        if(isset($_SESSION['role_id'])) redirect();
         $data['style'] = $this->load->view('include/style', NULL, TRUE);
         $data['script'] = $this->load->view('include/script', NULL, TRUE);
         $data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);

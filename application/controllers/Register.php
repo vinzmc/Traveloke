@@ -6,6 +6,7 @@ class Register extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        if(isset($_SESSION['role_id'])) redirect();
         $this->load->model('register_model');
     }
 
@@ -26,7 +27,8 @@ class Register extends CI_Controller
                     redirect('login');
                 } else {
                     $this->session->set_flashdata('error', $uploadlog);
-                    redirect('register');
+                    var_dump($uploadlog);
+                    //redirect('register');
                 }
             }else{
                 $this->session->set_flashdata('error', 'Email sudah digunakan');

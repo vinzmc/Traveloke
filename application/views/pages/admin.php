@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database Administrator</title>
-    <link rel="icon" href="<?=base_url()?>/favicon.svg" type="image/gif">
+    <link rel="icon" href="<?= base_url() ?>/favicon.svg" type="image/gif">
     <?php echo $style ?>
     <?= $tableCSS ?>
 </head>
@@ -28,16 +28,24 @@
                     <h5 class="text-center mt-3">User Database</h5>
                     <?php
                     if ($this->session->flashdata('error') != '') {
-                        echo '<div class="container alert alert-danger text-center font-weight-bold" role="alert">';
+                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> ';
                         echo $this->session->flashdata('error');
-                        echo '</div>';
+                        echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>';
                     }
                     ?>
                     <?php
                     if ($this->session->flashdata('msg') != '') {
-                        echo '<div class="container alert alert-success text-center font-weight-bold" role="alert">';
+                        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Succeed!</strong> ';
                         echo $this->session->flashdata('msg');
-                        echo '</div>';
+                        echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>';
                     }
                     ?>
                     <!-- content -->
@@ -48,7 +56,7 @@
                 </div>
                 <!-- hotel -->
                 <div class="tab-pane fade" id="nav-hotel" role="tabpanel" aria-labelledby="nav-hotel-tab">
-                    b
+                    <h5 class="text-center mt-3">Hotel Database</h5>
                 </div>
                 <!-- profile -->
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">

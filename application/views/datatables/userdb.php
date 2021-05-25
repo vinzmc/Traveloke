@@ -126,7 +126,7 @@
             <?php echo form_error('role_id'); ?>
         </td>
         <td style="min-width:15em; max-width:16.5em">
-            <input class="form-control" type="file" name="userfile" required></input>
+            <input class="form-control" type="file" name="userfile" ></input>
         </td>
         <td>
             <input type="submit" class="btn btn-success" value="New User"></input>

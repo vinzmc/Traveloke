@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="icon" href="<?=base_url()?>/favicon.svg" type="image/gif">
+    <link rel="icon" href="<?= base_url() ?>/favicon.svg" type="image/gif">
 </head>
 
 <body>
@@ -69,7 +69,7 @@
                                 <?= form_error('userfile'); ?>
                                 <label for="img">Photo</label>
                             </div>
-                            
+
                             <input type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" value="Sign Up"></input>
                             <?php echo form_close(); ?>
                         </div>
