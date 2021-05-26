@@ -17,7 +17,6 @@
                 <?= form_open('admin/update_user/' . $row['user_id'] . '/' . $row['role_id']); ?>
                 <!-- csrf token -->
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                <input type="hidden" name="tab" value="1"></input>
                 <!-- id -->
                 <td><?= $row['user_id'] ?></td>
                 <!-- name -->
@@ -53,8 +52,8 @@
                         <?= $row['phone'] ?>
                     </div>
                     <input class="form-control" type="text" name="phone" value="<?= $row['phone'] ?>" maxlength="12" required <?php if ($row['role_id'] == 2) {
-                                                                                                                    echo 'disabled';
-                                                                                                                } ?>></input>
+                                                                                                                                    echo 'disabled';
+                                                                                                                                } ?>></input>
                 </td>
                 <!-- role -->
                 <td>
@@ -105,7 +104,6 @@
         <?= form_open_multipart('admin/new_user'); ?>
         <!-- csrf token -->
         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-        <input type="hidden" name="tab" value="1"></input>
         <td>#</td>
         <td>
             <input class="form-control" type="text" name="name" placeholder="Full Name" required></input>

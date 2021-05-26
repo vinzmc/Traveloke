@@ -19,12 +19,11 @@
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link font-weight-bold active" style="color: #5D5C61;" id="nav-user-tab" data-toggle="tab" href="#nav-user" role="tab" aria-controls="nav-user" aria-selected="true">User DB</a>
                     <a class="nav-item nav-link font-weight-bold" style="color: #5D5C61;" id="nav-hotel-tab" data-toggle="tab" href="#nav-hotel" role="tab" aria-controls="nav-hotel" aria-selected="false">Hotel DB</a>
-                    <a class="nav-item nav-link font-weight-bold" style="color: #5D5C61;" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <!-- user -->
-                <div class="tab-pane fade <?php if( !isset($_SESSION['tab']) || $this->input->post('tab')== 1){echo ' show active';}?>" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+                <div class="tab-pane fade <?php if( !isset($tab) || $tab == 1){echo ' show active';}?>" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
                     <h5 class="text-center mt-3">User Database</h5>
                     <?php
                     if ($this->session->flashdata('error') != '') {
@@ -55,7 +54,7 @@
                     <!-- content limit -->
                 </div>
                 <!-- hotel -->
-                <div class="tab-pane fade <?php if($this->input->post('tab')==2){echo ' show active';}?>" id="nav-hotel" role="tabpanel" aria-labelledby="nav-hotel-tab">
+                <div class="tab-pane fade <?php if( isset($tab) && $tab == 2){echo ' show active';}?>" id="nav-hotel" role="tabpanel" aria-labelledby="nav-hotel-tab">
                     <h5 class="text-center mt-3">Hotel Database</h5>
                     <!-- content -->
                     <div class="container-fluid">
@@ -63,13 +62,7 @@
                     </div>
                     <!-- content limit -->
                 </div>
-                <!-- profile -->
-                <div class="tab-pane fade <?php if($this->input->post('tab')==3){echo ' show active';}?>" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    konten tab profile
-                </div>
             </div>
-
-
         </div>
         <?php echo $footer; ?>
     </div>

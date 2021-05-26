@@ -17,7 +17,6 @@
                 <?= form_open('admin/update_hotel/' . $row['hotel-id']); ?>
                 <!-- csrf token -->
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                <input type="hidden" name="tab" value="2"></input>
                 <!-- id -->
                 <td><?= $row['hotel-id'] ?></td>
                 <!-- hotel-name -->
@@ -73,7 +72,6 @@
     <!-- new user -->
     <tr>
         <?= form_open_multipart('admin/new_hotel'); ?>
-        <input type="hidden" name="tab" value="2"></input>
         <!-- csrf token -->
         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
         <td>#</td>

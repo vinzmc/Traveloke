@@ -13,10 +13,16 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
+		if (isset($_SESSION['tab'])) {
+			$data['tab'] = $_SESSION['tab'];
+		} else {
+			$data['tab'] = 1;
+		}
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
 		$data['script'] = $this->load->view('include/script', NULL, TRUE);
 		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
 		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
+		// table
 		$data['tableCSS'] = $this->load->view('datatables/style', NULL, TRUE);
 		$data['tableJS'] = $this->load->view('datatables/script', NULL, TRUE);
 		$temp['dbdata'] = $this->admin_model->getUser();
@@ -25,12 +31,9 @@ class Admin extends CI_Controller
 		$data['hotel'] = $this->load->view('datatables/hoteldb', $temp, TRUE);
 
 		$this->load->view('pages/admin', $data);
-		if (isset($_SESSION['error'])) {
-			unset($_SESSION['error']);
-		}
-		if (isset($_SESSION['msg'])) {
-			unset($_SESSION['msg']);
-		}
+
+		unset($_SESSION['error']);
+		unset($_SESSION['msg']);
 	}
 
 	public function update_user($uid, $role)
@@ -46,6 +49,7 @@ class Admin extends CI_Controller
 			$this->db->where('user_id', $uid);
 			$this->db->update('user_login');
 		}
+		$_SESSION['tab'] = 1;
 		redirect('admin');
 	}
 
@@ -65,16 +69,28 @@ class Admin extends CI_Controller
 				unset($deldir);
 			}
 		}
+		$_SESSION['tab'] = 1;
 		redirect('admin');
 	}
 
-	public function update_picture($uid, $role)
+	public function update_picture($id, $role)
 	{
 		if ($role == 2) {
-			$this->session->set_flashdata('error', 'Data Admin tidak dapat diubah melalui web!');
+			$this->session->set_flashdata('error', 'Data Admin tidak dapat diubah melalui admin page!');
 		} else {
+			$data['style'] = $this->load->view('include/style', NULL, TRUE);
+			$data['script'] = $this->load->view('include/script', NULL, TRUE);
+			$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
+			$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
+
+			$this->db->where('user_id', $id);
+			$query = $this->db->get('user_login');
+			$data['db'] = $query->row_array();
+			$this->load->view('pages/admin/updatepic', $data);
 		}
-		redirect('admin');
+	}
+	public function picture_reupload(){
+		$_SESSION['tab'] = 1;
 	}
 
 	public function delete_picture($uid, $role, $path, $subpath, $file)
@@ -93,6 +109,7 @@ class Admin extends CI_Controller
 				$this->db->update('user_login');
 			}
 		}
+		$_SESSION['tab'] = 1;
 		redirect('admin');
 	}
 
@@ -107,6 +124,7 @@ class Admin extends CI_Controller
 			$this->db->where('user_id', $uid);
 			$this->db->update('user_login');
 		}
+		$_SESSION['tab'] = 1;
 		redirect('admin');
 	}
 
@@ -130,6 +148,7 @@ class Admin extends CI_Controller
 		} else {
 			$this->session->set_flashdata('error', $result);
 		}
+		$_SESSION['tab'] = 1;
 		redirect('admin');
 	}
 
