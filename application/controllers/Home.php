@@ -15,7 +15,14 @@ class Home extends CI_Controller {
 		}else{
 			$keyword = '';
 		}
-		$hotel['data'] = $this->view_data->showData($keyword);
+
+		if(isset($_POST['star'])){
+			$star = $_POST['star'];
+		}else{
+			$star = '';
+		}
+		
+		$hotel['data'] = $this->view_data->showData($keyword, $star);
 
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
 		$data['script'] = $this->load->view('include/script', NULL, TRUE);

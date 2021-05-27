@@ -17,26 +17,13 @@
             <div class="row">
                 <div class="col-7">
                     <form action="<?= base_url() ?>" method="POST">
-                        <select class="form-select" aria-label="Default select example" style="width: 150px;">
-                            <option selected>Star</option>
+                        <select name="star" class="form-select" aria-label="Default select example" style="width: 150px;">
+                            <option value="">All Star</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                             <option value="4">Four</option>
                             <option value="5">Five</option>
-                        </select>
-                    </form>
-                </div>
-
-                <div class="col-7">
-                    <form action="<?= base_url() ?>" method="POST">
-                        <select class="form-select" aria-label="Default select example" style="width: 150px;">
-                            <option selected>Price</option>
-                            <option value="1">0 - Rp 500.000</option>
-                            <option value="2">Rp 500.001 - Rp 1.000.000 </option>
-                            <option value="3">Rp 1.000.001 - Rp 1.500.000</option>
-                            <option value="4">Rp 1.500.001 - Rp 2.000.000</option>
-                            <option value="5">Rp 2.000.001+</option>
                         </select>
                     </form>
                 </div>
@@ -56,7 +43,18 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-1"></div>
+                <div class="col-1">
+                    <form action="<?= base_url() ?>" method="POST">
+                        <select class="form-select" aria-label="Default select example" style="width: 150px;">
+                            <option selected>Price</option>
+                            <option value="1">0 - Rp 500.000</option>
+                            <option value="2">Rp 500.001 - Rp 1.000.000 </option>
+                            <option value="3">Rp 1.000.001 - Rp 1.500.000</option>
+                            <option value="4">Rp 1.500.001 - Rp 2.000.000</option>
+                            <option value="5">Rp 2.000.001+</option>
+                        </select>
+                    </form>
+                </div>
             </div>
             <div class="row">
                 <?php echo $view; ?>
