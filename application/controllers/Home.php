@@ -30,7 +30,6 @@ class Home extends CI_Controller {
 		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
 
 		$data['view'] = $this->load->view('template/view', $hotel, TRUE);
-
 		$this->load->view('pages/home', $data);
 	}
 }

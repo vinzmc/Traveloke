@@ -16,7 +16,9 @@
         <div class="container content navmargin" style="padding: 20px;">
             <div class="row">
                 <div class="col-7">
-                    <form action="<?= base_url() ?>" method="POST">
+                    <form action="<?= base_url(); ?>" method="POST">
+                    <!-- csrv -->
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <select name="star" class="form-select" aria-label="Default select example" style="width: 150px;">
                             <option value="">All Star</option>
                             <option value="1">One</option>
@@ -25,7 +27,9 @@
                             <option value="4">Four</option>
                             <option value="5">Five</option>
                         </select>
+                        <input type="submit" class="btn btn-success" value="Filter">
                     </form>
+                    
                 </div>
 
                 <div class="col-4">
