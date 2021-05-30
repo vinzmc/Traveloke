@@ -94,8 +94,10 @@ class Admin_model extends CI_Model
             if (strcmp('defaultprofile.png', $data['picture']) != 0) {
                 $file = str_replace("assets/images/", "", $data['picture']);
                 $deldir = realpath(APPPATH . '../assets/images/' . $file);
-                if (file_exists($deldir)) {
-                    unlink($deldir);
+                if (strcmp('defaultprofile.png', $file) != 0) {
+                    if (file_exists($deldir)) {
+                        unlink($deldir);
+                    }
                 }
                 unset($deldir);
                 $this->db->set('picture', 'assets/images/defaultprofile.png');
