@@ -67,9 +67,6 @@ class Login extends CI_Controller
                 $this->session->set_userdata('phone', $cek->phone);
                 $this->session->set_userdata('picture', $cek->picture);
                 switch ($cek->role_id) {
-                    case 1:
-                        redirect();
-                        break;
                     case 2:
                         redirect('admin');
                         break;
@@ -90,6 +87,6 @@ class Login extends CI_Controller
     public function logout()
     {
         session_destroy();
-        redirect();
+        redirect('login');
     }
 }
