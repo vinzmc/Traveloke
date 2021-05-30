@@ -13,9 +13,6 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
-		if (!isset($_SESSION['tab'])) {
-			$data['tab'] = 1;
-		}
 
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
 		$data['script'] = $this->load->view('include/script', NULL, TRUE);
@@ -33,7 +30,26 @@ class Admin extends CI_Controller
 		$this->load->view('pages/admin', $data);
 
 		unset($_SESSION['error']);
+		unset($_SESSION['errorH']);
 		unset($_SESSION['msg']);
+		unset($_SESSION['msgH']);
+	}
+	public function updateHotelPic($id)
+	{
+		$data['detail'] = $this->admin_model->getHotelInfo($id);
+
+		$data['style'] = $this->load->view('include/style', NULL, TRUE);
+		$data['script'] = $this->load->view('include/script', NULL, TRUE);
+		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
+		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
+
+		$this->load->view('pages/admin/updatehotelpic', $data);
+	}
+
+	public function updateHotelPicture()
+	{
+		$this->admin_model->updateHPicture();
+		redirect('admin');
 	}
 
 	public function updatePicPage($uid)
@@ -55,43 +71,60 @@ class Admin extends CI_Controller
 	public function updateUserPicture()
 	{
 		$this->admin_model->updatePicture();
-		$_SESSION['tab'] = 1;
 		redirect('admin');
 	}
 
 	public function reset_user_picture($uid)
 	{
 		$this->admin_model->resetUserPicture($uid);
-		$_SESSION['tab'] = 1;
+		redirect('admin');
+	}
+
+	public function reset_hotel_picture($uid)
+	{
+		$this->admin_model->resetHotelPicture($uid);
 		redirect('admin');
 	}
 
 	public function new_user()
 	{
 		$this->admin_model->newUser();
-		$_SESSION['tab'] = 1;
+		redirect('admin');
+	}
+
+	public function new_hotel()
+	{
+		$this->admin_model->newHotel();
 		redirect('admin');
 	}
 
 	public function update_user()
 	{
 		$this->admin_model->updateUser();
-		$_SESSION['tab'] = 1;
+		redirect('admin');
+	}
+
+	public function update_hotel()
+	{
+		$this->admin_model->updateHotel();
 		redirect('admin');
 	}
 
 	public function delete_user($uid)
 	{
 		$this->admin_model->delUser($uid);
-		$_SESSION['tab'] = 1;
+		redirect('admin');
+	}
+
+	public function delete_hotel($uid)
+	{
+		$this->admin_model->delHotel($uid);
 		redirect('admin');
 	}
 
 	public function reset_password($uid)
 	{
 		$this->admin_model->resetPass($uid);
-		$_SESSION['tab'] = 1;
 		redirect('admin');
 	}
-	
 }

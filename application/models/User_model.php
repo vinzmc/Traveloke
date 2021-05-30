@@ -85,8 +85,8 @@ class User_model extends CI_Model
         $config['file_name']             = $new_name;
         $config['allowed_types']        = 'gif|jpg|png|JPG|GIF|PNG|jpeg|JPEG|jfif|JFIF';
         $config['max_size']             = 2000;
-        $config['max_width']            = 1280;
-        $config['max_height']           = 720;
+        $config['max_width']            = 1920;
+        $config['max_height']           = 1080;
 
         $this->load->library('upload', $config);
 

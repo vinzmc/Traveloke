@@ -23,7 +23,7 @@
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <!-- user -->
-                <div class="tab-pane fade <?php if( !isset($tab) || $tab == 1){echo ' show active';}?>" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+                <div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
                     <h5 class="text-center mt-3">User Database</h5>
                     <?php
                     if ($this->session->flashdata('error') != '') {
@@ -54,8 +54,30 @@
                     <!-- content limit -->
                 </div>
                 <!-- hotel -->
-                <div class="tab-pane fade <?php if( isset($tab) && $tab == 2){echo ' show active';}?>" id="nav-hotel" role="tabpanel" aria-labelledby="nav-hotel-tab">
+                <div class="tab-pane fade" id="nav-hotel" role="tabpanel" aria-labelledby="nav-hotel-tab">
                     <h5 class="text-center mt-3">Hotel Database</h5>
+                    <?php
+                    if ($this->session->flashdata('errorH') != '') {
+                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> ';
+                        echo $this->session->flashdata('errorH');
+                        echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>';
+                    }
+                    ?>
+                    <?php
+                    if ($this->session->flashdata('msgH') != '') {
+                        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Succeed!</strong> ';
+                        echo $this->session->flashdata('msgH');
+                        echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>';
+                    }
+                    ?>
                     <!-- content -->
                     <div class="container-fluid">
                         <?= $hotel ?>

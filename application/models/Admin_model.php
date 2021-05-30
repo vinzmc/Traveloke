@@ -15,7 +15,7 @@ class Admin_model extends CI_Model
 
     public function newUser()
     {
-        $this->Userform_rules();
+        $this->userFormRules();
         $this->load->model('register_model');
         $_POST['password'] = $this->generateRandomString();
         $result = $this->form_validation->run();
@@ -32,6 +32,34 @@ class Admin_model extends CI_Model
             }
         } else {
             $this->session->set_flashdata('error', $result);
+        }
+    }
+
+    public function newHotel()
+    {
+        $this->hotelFormRules();
+        $result = $this->form_validation->run();
+        if ($result) { //form input validation
+            $_POST['name'] = $_POST['hotel-name'];
+            $this->load->model('user_model');
+            $uploadlog = $this->user_model->upload();
+            if (is_bool($uploadlog)) { //upload error
+                $this->session->set_flashdata('errorH', 'Gambar yang di upload Error, gambar default akan digunakan, silahkan mengupload gambar lain');
+            } else if (!is_null($uploadlog)) { //gak kosong
+                $uploadlog = str_replace("assets/images/", "", $uploadlog);
+                $this->db->set('`hotel-photo`', $uploadlog);
+            } else{
+                $this->db->set('`hotel-photo`', 'defaulthotel.png');
+            }
+            $this->db->set('`hotel-name`', $_POST['hotel-name']);
+            $this->db->set('`hotel-address`', $_POST['hotel-address']);
+            $this->db->set('`hotel-price`', $_POST['hotel-price']);
+            $this->db->set('`hotel-stock`', $_POST['hotel-stock']);
+            $this->db->set('star', $_POST['star']);
+            $this->db->insert('hotel_list');
+            $this->session->set_flashdata('msgH', 'Hotel Baru berhasil ditambahkan!');
+        } else {
+            $this->session->set_flashdata('errorH', $result);
         }
     }
 
@@ -55,6 +83,23 @@ class Admin_model extends CI_Model
         }
     }
 
+    public function delHotel($id)
+    {
+        $data = $this->getHotelInfo($id);
+
+        $this->db->where('`hotel-id`', $id);
+        $this->db->delete('hotel_list');
+
+        $file = str_replace("assets/images/", "", $data['hotel-photo']);
+        if (strcmp('defaulthotel.png', $file) != 0) {
+            $deldir = realpath(APPPATH . '../assets/images/' . $file);
+            if (file_exists($deldir)) {
+                unlink($deldir);
+            }
+            unset($deldir);
+        }
+    }
+
     public function updateUser()
     {
         $data = $this->getUserInfo($_POST['user_id']);
@@ -68,7 +113,22 @@ class Admin_model extends CI_Model
             $this->db->set('role_id', $_POST['role_id']);
             $this->db->where('user_id', $_POST['user_id']);
             $this->db->update('user_login');
+            $this->session->set_flashdata('msg', "Berhasil update data user!");
         }
+    }
+
+    public function updateHotel()
+    {
+        $this->db->set('`hotel-name`', $_POST['hotel-name']);
+        $this->db->set('`hotel-address`', $_POST['hotel-address']);
+        $this->db->set('`hotel-price`', $_POST['hotel-price']);
+        $this->db->set('`hotel-stock`', $_POST['hotel-stock']);
+        $this->db->set('star', $_POST['star']);
+        $this->db->where('`hotel-id`', $_POST['hotel-id']);
+        $this->db->update('hotel_list');
+        $temp = $_POST['hotel-name'];
+        $this->session->set_flashdata('msgH', "Berhasil update data $temp !");
+        unset($temp);
     }
 
     public function resetPass($uid)
@@ -91,20 +151,35 @@ class Admin_model extends CI_Model
         if ($data['role_id'] == 2) {
             $this->session->set_flashdata('error', 'Data Admin tidak dapat diubah melalui web!');
         } else {
-            if (strcmp('defaultprofile.png', $data['picture']) != 0) {
-                $file = str_replace("assets/images/", "", $data['picture']);
-                $deldir = realpath(APPPATH . '../assets/images/' . $file);
-                if (strcmp('defaultprofile.png', $file) != 0) {
-                    if (file_exists($deldir)) {
-                        unlink($deldir);
-                    }
+            $file = str_replace("assets/images/", "", $data['picture']);
+            $deldir = realpath(APPPATH . '../assets/images/' . $file);
+            if (strcmp('defaultprofile.png', $file) != 0) {
+                if (file_exists($deldir)) {
+                    unlink($deldir);
                 }
-                unset($deldir);
-                $this->db->set('picture', 'assets/images/defaultprofile.png');
-                $this->db->where('user_id', $uid);
-                $this->db->update('user_login');
+            }
+            unset($deldir);
+            $this->db->set('picture', 'assets/images/defaultprofile.png');
+            $this->db->where('user_id', $uid);
+            $this->db->update('user_login');
+        }
+    }
+
+    public function resetHotelPicture($id)
+    {
+        $data = $this->getHotelInfo($id);
+        $file = str_replace("assets/images/", "", $data['hotel-photo']);
+        $deldir = realpath(APPPATH . '../assets/images/' . $file);
+        if (strcmp('defaulthotel.png', $file) != 0) {
+            if (file_exists($deldir)) {
+                unlink($deldir);
             }
         }
+        unset($deldir);
+        $this->db->set('`hotel-photo`', 'defaulthotel.png');
+        $this->db->where('`hotel-id`', $id);
+        $this->db->update('hotel_list');
+        $this->session->set_flashdata('msgH', "Berhasil reset foto hotel!");
     }
 
     public function updatePicture()
@@ -128,10 +203,35 @@ class Admin_model extends CI_Model
         }
     }
 
+    public function updateHPicture()
+    {
+        $_POST['name'] = $_POST['hotel-name'];
+        $this->load->model('user_model');
+        $uploadlog = $this->user_model->upload();
+        if (is_bool($uploadlog)) { //upload error
+            $this->session->set_flashdata('errorH', 'Gambar yang di upload Error, silahkan coba gambar lain');
+        } else if (!is_null($uploadlog)) { //gak kosong
+            $uploadlog = str_replace("assets/images/", "", $uploadlog);
+            $this->db->set('`hotel-photo`', $uploadlog);
+            $this->db->where('`hotel-id`', $_POST['hotel-id']);
+            $this->db->update('hotel_list');
+            $this->session->set_flashdata('msgH', 'Gambar hotel berhasil diganti');
+        } else {
+            $this->session->set_flashdata('errorH', $uploadlog);
+        }
+    }
+
     public function getUserInfo($uid)
     {
         $this->db->where('user_id', $uid);
         $query = $this->db->get('user_login');
+        return $query->row_array();
+    }
+
+    public function getHotelInfo($id)
+    {
+        $this->db->where('`hotel-id`', $id);
+        $query = $this->db->get('hotel_list');
         return $query->row_array();
     }
 
@@ -146,7 +246,7 @@ class Admin_model extends CI_Model
         return $randomString;
     }
 
-    public function Userform_rules()
+    public function userFormRules()
     {
         $this->form_validation->set_rules(
             'name',
@@ -160,13 +260,6 @@ class Admin_model extends CI_Model
             'email',
             'required',
             array('required' => 'Email Cant Be Empty !')
-        );
-
-        $this->form_validation->set_rules(
-            'password',
-            'password',
-            'required',
-            array('required' => 'Password Cant Be Empty !')
         );
 
         $this->form_validation->set_rules(
@@ -188,6 +281,44 @@ class Admin_model extends CI_Model
             'role_id',
             'required',
             array('required' => 'Phone Number Cant Be Empty !')
+        );
+    }
+
+    public function hotelFormRules()
+    {
+        $this->form_validation->set_rules(
+            'hotel-name',
+            'hotel-name',
+            'required',
+            array('required' => 'Name Cant Be Empty !')
+        );
+
+        $this->form_validation->set_rules(
+            'hotel-address',
+            'hotel-address',
+            'required',
+            array('required' => 'Address Cant Be Empty !')
+        );
+
+        $this->form_validation->set_rules(
+            'hotel-price',
+            'hotel-price',
+            'required',
+            array('required' => 'Hotel Price Cant Be Empty !')
+        );
+
+        $this->form_validation->set_rules(
+            'hotel-stock',
+            'hotel-stock',
+            'required',
+            array('required' => 'Availabe Room Input Cant Be Empty/NULL!')
+        );
+
+        $this->form_validation->set_rules(
+            'star',
+            'star',
+            'required',
+            array('required' => 'Hotel Star Cant Be Empty !')
         );
     }
 }

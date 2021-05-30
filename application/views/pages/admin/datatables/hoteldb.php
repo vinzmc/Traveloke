@@ -14,11 +14,12 @@
     <tbody>
         <?php foreach ($hoteldb as $row) { ?>
             <tr>
-                <?= form_open('admin/update_hotel/' . $row['hotel-id']); ?>
+                <?= form_open('admin/update_hotel'); ?>
                 <!-- csrf token -->
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 <!-- id -->
                 <td><?= $row['hotel-id'] ?></td>
+                <input type="hidden" name="hotel-id" value="<?= $row['hotel-id'] ?>">
                 <!-- hotel-name -->
                 <td>
                     <div hidden>
@@ -56,20 +57,20 @@
                 </td>
                 <!-- file -->
                 <td>
-                    <a class="btn btn-info mb-1 mt-1" href="<?= base_url('admin/change_hotel_pic/' . $row['hotel-id']) ?>"> Edit</a>
-                    <a class="btn btn-danger mb-1 mt-1" href="<?= base_url('admin/delete_hotel_picture/' . $row['hotel-id'] . '/' . $row['hotel-photo']) ?>">Reset</a>
+                    <a class="btn btn-info mb-1 mt-1" href="<?= base_url('admin/updateHotelPic/' . $row['hotel-id']) ?>"> Edit</a>
+                    
                     <?= str_replace("assets/images/", "", $row['hotel-photo']); ?>
                 </td>
                 <!-- option -->
                 <td>
-                    <input class="btn btn-warning mb-1 mt-1" type="submit" value="Update Changes"></input>
-                    <a class="btn btn-danger mb-1 mt-1" href="<?= base_url('admin/delete_user/' . $row['hotel-id'] . '/' . $row['hotel-photo']) ?>" onclick="return confirm('Are you sure you want to delete <?= $row['hotel-name'] ?> info?');"> Delete</a>
+                    <input class="btn btn-warning mb-1 mt-1" type="submit" value="Update"></input>
+                    <a class="btn btn-danger mb-1 mt-1" href="<?= base_url('admin/delete_hotel/' . $row['hotel-id']) ?>" onclick="return confirm('Are you sure you want to delete <?= $row['hotel-name'] ?> info?');"> Delete</a>
                 </td>
                 <?php echo form_close(); ?>
             </tr>
         <?php } ?>
     </tbody>
-    <!-- new user -->
+    <!-- new hotel -->
     <tr>
         <?= form_open_multipart('admin/new_hotel'); ?>
         <!-- csrf token -->
