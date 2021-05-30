@@ -116,9 +116,9 @@ class Admin extends CI_Controller
 		redirect('admin');
 	}
 
-	public function delete_hotel($uid)
+	public function delete_hotel($id)
 	{
-		$this->admin_model->delHotel($uid);
+		$this->admin_model->delHotel($id);
 		redirect('admin');
 	}
 
