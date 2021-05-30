@@ -14,11 +14,15 @@
     <tbody>
         <?php foreach ($dbdata as $row) { ?>
             <tr>
-                <?= form_open('admin/update_user/' . $row['user_id'] . '/' . $row['role_id']); ?>
+                <?= form_open('admin/update_user'); ?>
                 <!-- csrf token -->
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 <!-- id -->
-                <td><?= $row['user_id'] ?></td>
+                <td>
+                    <?= $row['user_id'] ?>
+                    <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
+                </td>
+
                 <!-- name -->
                 <td>
                     <div hidden>
@@ -77,23 +81,21 @@
                 <td>
                     <a class="btn btn-info mb-1 mt-1 <?php if ($row['role_id'] == 2) {
                                                             echo 'disabled';
-                                                        } ?>" href="<?= base_url('admin/update_picture/' . $row['user_id'] . '/' . $row['role_id']) ?>"> Edit</a>
-                    <a class="btn btn-danger mb-1 mt-1 <?php if ($row['role_id'] == 2 || strcmp($row['picture'], 'assets/images/defaultprofile.png') == 0) {
-                                                            echo 'disabled';
-                                                        } ?>" href="<?= base_url('admin/delete_picture/' . $row['user_id'] . '/' . $row['role_id'] . '/' . $row['picture']) ?>">Reset</a>
+                                                        } ?>" href="<?= base_url('admin/updatePicPage/' . $row['user_id']) ?>"> Edit</a>
+
                     <?= str_replace("assets/images/", "", $row['picture']); ?>
                 </td>
                 <!-- option -->
                 <td>
                     <a class="btn btn-secondary mb-1 mt-1 <?php if ($row['role_id'] == 2) {
                                                                 echo 'disabled';
-                                                            } ?>" href="<?= base_url('admin/reset_password/' . $row['user_id'] . '/' . $row['role_id']) ?>" onclick="return confirm('Are you sure you want to reset <?= $row['name'] ?> password?');"> Reset Password</a>
+                                                            } ?>" href="<?= base_url('admin/reset_password/' . $row['user_id']) ?>" onclick="return confirm('Are you sure you want to reset <?= $row['name'] ?> password?');"> Reset Password</a>
                     <input class="btn btn-warning mb-1 mt-1" type="submit" value="Update" <?php if ($row['role_id'] == 2) {
                                                                                                 echo 'disabled';
                                                                                             } ?>></input>
                     <a class="btn btn-danger mb-1 mt-1 <?php if ($row['role_id'] == 2) {
                                                             echo 'disabled';
-                                                        } ?>" href="<?= base_url('admin/delete_user/' . $row['user_id'] . '/' . $row['role_id'] . '/' . $row['picture']) ?>" onclick="return confirm('Are you sure you want to delete <?= $row['name'] ?> user account?');"> Delete</a>
+                                                        } ?>" href="<?= base_url('admin/delete_user/' . $row['user_id']) ?>" onclick="return confirm('Are you sure you want to delete <?= $row['name'] ?> user account?');"> Delete</a>
                 </td>
                 <?php echo form_close(); ?>
             </tr>

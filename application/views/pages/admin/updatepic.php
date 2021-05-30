@@ -17,20 +17,29 @@
             <div class="row mt-5 h-100 rounded border m-5 bg-white">
                 <div class="col-sm mr-0 pr-0">
                     <div class="container">
-                        <img src="<?= base_url($db['picture']); ?>" class="rounded mx-auto d-block mt-3" alt="...">
-                        <h2 class="text-center"><?= str_replace('assets/images/', '', $db['picture']); ?></h2>
+                        <img src="<?= base_url($detail['picture']); ?>" class="rounded mx-auto d-block mt-3" alt="...">
+                        <h2 class="text-center"><?= str_replace('assets/images/', '', $detail['picture']); ?></h2>
                         <div class="row">
-                            <div class="col-lg-4 col"></div>
-                            <div class="col-lg-2 col">
-                                <?= form_open_multipart('admin/picture_reupload'); ?>
+                            <div class="d-flex justify-content-center">
+                                <?= form_open_multipart('admin/updateUserPicture'); ?>
                                 <!-- csrv -->
                                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                <!-- hidden input -->
+                                <input type="hidden" name="user_id" value="<?=$detail['user_id']?>"></input>
+                                <input type="hidden" name="name" value="<?=$detail['name']?>"></input>
                                 <!-- file -->
                                 <input class="form-control w-auto" type="file" name="userfile"></input>
-                                <input type="submit" class="btn btn-success mt-1" value="Change Picture"></input>
+                                <div class="row mx-auto mt-2 d-block">
+                                    <!-- submit btn -->
+                                    <input type="submit" class="btn btn-success font-weight-bold" value="Save Changes"></input>
+                                    <!-- reset picture -->
+                                    <a href="<?= base_url('admin/reset_user_picture/' . $detail['user_id']) ?>" class="btn btn-secondary font-weight-bold text-white mt-1">Reset Picture</a>
+                                    <!-- cancel btn -->
+                                    <a href="<?= base_url('admin') ?>" class="btn btn-danger font-weight-bold text-white mt-1">Cancel</a>
+                                    
+                                </div>
                                 </form>
                             </div>
-                            <div class="col-lg-auto col"></div>
                         </div>
                     </div>
                 </div>
