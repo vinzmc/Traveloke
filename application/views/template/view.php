@@ -25,11 +25,15 @@
                 <!-- button book now -->
                 <form action="
                     <?php if (isset($_SESSION['name'])) {
-                        echo base_url("user");
+                        echo base_url("cart/insert_item");
                     } else {
                         echo base_url("login");
                     } ?>
                     " method="POST">
+                    <!-- csrf -->
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                    <!-- hidden input -->
+                    <input type="hidden" name="id" value="<?= $row['hotel-id'] ?>">
                     <input type="submit" class="btn btn-primary" value="Book Now" <?= $room_state ?>></input>
                 </form>
                 <!-- available room status -->
