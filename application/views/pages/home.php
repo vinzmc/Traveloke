@@ -15,7 +15,7 @@
         <?php echo $navbar; ?>
         <div class="container content navmargin" style="padding: 20px;">
             <div class="row">
-                <div class="col-7 ml-3">
+                <div class="col-7 ml-1">
                     <div id="accordion" class="pb-2" style="position:absolute; z-index:1">
                         <div class="card">
                             <button class="btn btn-secondary text-left" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -35,11 +35,11 @@
                                         <input type="hidden" name="keyword" value="<?php if(isset($_POST['keyword'])){echo $_POST['keyword'];}?>">
                                         <!-- hotel star -->
                                         <p class="pb-0 mb-0 font-weight-bold">Minimum Star</p>
-                                        <div class="border rounded pt-0 p-1">
+                                        <div class="border rounded pt-0 p-1" >
                                             <small>
                                                 <div class="form-check">
                                                 
-                                                    <input class="form-check-input" type="radio" name="star" id="exampleRadios1" value="1" <?php if(isset($_POST['star']) && $_POST['star']==1){echo 'checked';}?>>
+                                                    <input class="form-check-input" type="radio" name="star" id="exampleRadios1" value="1" <?php if(!isset($_POST['star']) || $_POST['star']==1){echo 'checked';}?>>
                                                     <label class="form-check-label" for="exampleRadios1">
                                                         ALL
                                                     </label>
