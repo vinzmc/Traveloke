@@ -16,7 +16,7 @@
         <div class="container content navmargin" style="padding: 20px;">
             <div class="row">
                 <div class="col-7 ml-3">
-                    <div id="accordion" class="pb-2" style="position:fixed; z-index:1">
+                    <div id="accordion" class="pb-2" style="position:absolute; z-index:1">
                         <div class="card">
                             <button class="btn btn-secondary text-left" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <div class="card-header" style="border-width: 0; padding:0px;" id="headingOne">
