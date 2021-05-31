@@ -55,6 +55,12 @@
                                     </small>
                                     <h6 class="card-subtitle mb-2 pt-1">Rp <?= number_format($row['total'], 0, ",", "."); ?></h6>
                                 </div>
+                                <div class="ml-2">
+                                    <small class="text-muted font-weight-bold">
+                                        Purchase Date
+                                    </small>
+                                    <h6 class="card-subtitle mb-2 pt-1"><?= $row['date'] ?></h6>
+                                </div>
                             </div>
                         </div>
                     </div>

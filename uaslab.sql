@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2021 at 11:41 PM
+-- Generation Time: Jun 01, 2021 at 12:00 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -43,7 +43,7 @@ CREATE TABLE `hotel_list` (
 
 INSERT INTO `hotel_list` (`hotel-id`, `hotel-name`, `hotel-address`, `hotel-price`, `hotel-stock`, `hotel-photo`, `star`) VALUES
 (1, 'Hotel Astoen', 'Bandung', 1500000, 0, 'aston.jpg', 5),
-(2, 'Hotel Trans', 'Bandung', 2400000, 75, 'Hotel_Trans.jpg', 4),
+(2, 'Hotel Trans', 'Bandung', 2400000, 74, 'Hotel_Trans.jpg', 4),
 (3, 'Four Seasons Resort', 'Jimbaran', 3000000, 86, 'jimbaran.jpg', 5),
 (4, 'Akhyana Village', 'Jimbaran ', 2600000, 46, 'akhyana.jpg', 5),
 (5, 'Ascott Waterplace Surabaya', 'Surabaya', 1190000, 86, 'ascot.jpg', 4),
@@ -63,15 +63,17 @@ CREATE TABLE `transaction` (
   `number` varchar(32) NOT NULL,
   `total` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `hotel-id` int(11) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`id`, `name`, `number`, `total`, `qty`, `user_id`) VALUES
-(3, 'Hotel Trans', '9a954d198ae12c56d73d6cb64625a9e0', 2400000, 1, 1);
+INSERT INTO `transaction` (`id`, `name`, `number`, `total`, `qty`, `user_id`, `hotel-id`, `date`) VALUES
+(9, 'Hotel Trans', 'da3b69921579f5530672bdd7a6663b14', 2400000, 1, 1, 2, '2021-05-31');
 
 -- --------------------------------------------------------
 
@@ -134,7 +136,7 @@ ALTER TABLE `hotel_list`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_login`
