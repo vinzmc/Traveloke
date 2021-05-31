@@ -22,7 +22,7 @@
       public function showData($keyword, $star) 
       {  
          //data is retrive from this query  
-         $query = $this->db->query("SELECT * FROM hotel_list WHERE ((`hotel-name` LIKE '%$keyword%') OR (`hotel-address` LIKE '%$keyword%') OR (`star` LIKE '$keyword'))");
+         $query = $this->db->query("SELECT * FROM hotel_list WHERE ((`hotel-name` LIKE '%$keyword%') OR (`hotel-address` LIKE '%$keyword%') OR (`star` LIKE '$star'))");
          return $query->result_array();
       }
    }  
