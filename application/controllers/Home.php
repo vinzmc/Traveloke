@@ -1,28 +1,28 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends CI_Controller
+{
 	public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('view_data');
-		$this->clear_cache();
-    }
-
-	 public function index()
 	{
-		if(isset( $_POST['keyword'])){
+		parent::__construct();
+		$this->load->model('view_data');
+	}
+
+	public function index()
+	{
+		if (isset($_POST['keyword'])) {
 			$keyword = $_POST['keyword'];
-		}else{
+		} else {
 			$keyword = '';
 		}
 
-		if(isset($_POST['star'])){
+		if (isset($_POST['star'])) {
 			$star = $_POST['star'];
-		}else{
+		} else {
 			$star = '';
 		}
-		
+
 		$hotel['data'] = $this->view_data->showData($keyword, $star);
 
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
@@ -33,9 +33,4 @@ class Home extends CI_Controller {
 		$data['view'] = $this->load->view('template/view', $hotel, TRUE);
 		$this->load->view('pages/home', $data);
 	}
-	function clear_cache()
-    {
-        $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
-        $this->output->set_header("Pragma: no-cache");
-    }
 }

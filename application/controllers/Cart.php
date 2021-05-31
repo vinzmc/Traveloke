@@ -6,8 +6,9 @@ class Cart extends CI_Controller
 	public function __construct()
     {
         parent::__construct();
-		if(!isset($_SESSION['user_id'])) redirect();
-		
+		if(!isset($_SESSION['user_id'])) {redirect();}
+
+		$this->load->library('cart');
         $this->load->model('cart_model');
     }
 
