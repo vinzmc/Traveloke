@@ -11,19 +11,7 @@ class Home extends CI_Controller
 
 	public function index()
 	{
-		if (isset($_POST['keyword'])) {
-			$keyword = $_POST['keyword'];
-		} else {
-			$keyword = '';
-		}
-
-		if (isset($_POST['star'])) {
-			$star = $_POST['star'];
-		} else {
-			$star = '';
-		}
-
-		$hotel['data'] = $this->view_data->showData($keyword, $star);
+		$hotel['data'] = $this->view_data->showData();
 
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
 		$data['script'] = $this->load->view('include/script', NULL, TRUE);
