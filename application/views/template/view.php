@@ -23,19 +23,21 @@
                 }
                 ?>
                 <!-- button book now -->
-                <form action="
-                    <?php if (isset($_SESSION['name'])) {
-                        echo base_url("cart/insert_item");
-                    } else {
-                        echo base_url("login");
-                    } ?>
-                    " method="POST">
-                    <!-- csrf -->
-                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                    <!-- hidden input -->
-                    <input type="hidden" name="id" value="<?= $row['hotel-id'] ?>">
-                    <input type="submit" class="btn btn-primary" value="Book Now" <?= $room_state ?>></input>
-                </form>
+
+
+                <a href="<?php if (isset($_SESSION['name'])) {
+                                echo base_url("cart/cartDetail/" . $row['hotel-id']);
+                            } else {
+                                echo base_url("login");
+                            } ?>" style="<?php
+                            if ($row['hotel-stock'] == 0)echo('pointer-events: none;');?>">
+                    <button class="btn btn-primary" <?= $room_state ?>>
+                        Book Now
+                    </button>
+                </a>
+
+
+
                 <!-- available room status -->
                 <small class="card-text mt-2 mb-0 pb-0 float-right">
                     <?php

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2021 at 12:00 AM
+-- Generation Time: Jun 01, 2021 at 05:25 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -43,7 +43,7 @@ CREATE TABLE `hotel_list` (
 
 INSERT INTO `hotel_list` (`hotel-id`, `hotel-name`, `hotel-address`, `hotel-price`, `hotel-stock`, `hotel-photo`, `star`) VALUES
 (1, 'Hotel Astoen', 'Bandung', 1500000, 0, 'aston.jpg', 5),
-(2, 'Hotel Trans', 'Bandung', 2400000, 74, 'Hotel_Trans.jpg', 4),
+(2, 'Hotel Trans', 'Bandung', 2400000, 71, 'Hotel_Trans.jpg', 4),
 (3, 'Four Seasons Resort', 'Jimbaran', 3000000, 86, 'jimbaran.jpg', 5),
 (4, 'Akhyana Village', 'Jimbaran ', 2600000, 46, 'akhyana.jpg', 5),
 (5, 'Ascott Waterplace Surabaya', 'Surabaya', 1190000, 86, 'ascot.jpg', 4),
@@ -65,15 +65,20 @@ CREATE TABLE `transaction` (
   `qty` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `hotel-id` int(11) NOT NULL,
-  `date` date NOT NULL
+  `tDate` date NOT NULL,
+  `iDate` date NOT NULL,
+  `oDate` date NOT NULL,
+  `phone` varchar(12) NOT NULL,
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`id`, `name`, `number`, `total`, `qty`, `user_id`, `hotel-id`, `date`) VALUES
-(9, 'Hotel Trans', 'da3b69921579f5530672bdd7a6663b14', 2400000, 1, 1, 2, '2021-05-31');
+INSERT INTO `transaction` (`id`, `name`, `number`, `total`, `qty`, `user_id`, `hotel-id`, `tDate`, `iDate`, `oDate`, `phone`, `email`) VALUES
+(11, 'Kaleb Juliu', '9c98ba080df4deedbac4b0e1619ac1f0', 2400000, 1, 1, 2, '2021-06-01', '2021-06-01', '2021-06-02', '08122236458', 'kaleb@admin.com'),
+(12, 'Kang Riki', 'afafdb960c6e09eee6f82029762c1c67', 2400000, 1, 2, 2, '2021-06-01', '2021-06-01', '2021-06-02', '081222364589', 'riki@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -136,7 +141,7 @@ ALTER TABLE `hotel_list`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_login`

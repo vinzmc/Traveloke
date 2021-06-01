@@ -42,12 +42,11 @@
                                         #<?= $row['number'] ?>
                                     </h4>
                                 </div>
-                                <hr class="mb-2 mt-0" style="max-width:95%">
                                 <div class="ml-2">
                                     <small class="text-muted font-weight-bold">
-                                        Hotel Name
+                                        Transaction Date
                                     </small>
-                                    <h6 class="card-subtitle mb-2 pt-1"><?= $row['name'] ?></h6>
+                                    <h6 class="card-subtitle mb-2 pt-1"><?= $row['tDate'] ?></h6>
                                 </div>
                                 <div class="ml-2">
                                     <small class="text-muted font-weight-bold">
@@ -55,11 +54,31 @@
                                     </small>
                                     <h6 class="card-subtitle mb-2 pt-1">Rp <?= number_format($row['total'], 0, ",", "."); ?></h6>
                                 </div>
+                                <hr class="mb-2 mt-0" style="max-width:95%">
+                                
                                 <div class="ml-2">
                                     <small class="text-muted font-weight-bold">
-                                        Purchase Date
+                                        Email/Phone
                                     </small>
-                                    <h6 class="card-subtitle mb-2 pt-1"><?= $row['date'] ?></h6>
+                                    <h6 class="card-subtitle mb-2 pt-1"><?= $row['email'] ?> / <?= $row['phone'] ?> </h6>
+                                </div>
+                                <div class="ml-2">
+                                    <small class="text-muted font-weight-bold">
+                                        Contact Person
+                                    </small>
+                                    <h6 class="card-subtitle mb-2 pt-1"><?= $row['name'] ?></h6>
+                                </div>
+                                <div class="ml-2">
+                                    <small class="text-muted font-weight-bold">
+                                        Reserved Room
+                                    </small>
+                                    <h6 class="card-subtitle mb-2 pt-1"><?= $row['qty'] ?> </h6>
+                                </div>
+                                <div class="ml-2">
+                                    <small class="text-muted font-weight-bold">
+                                        Stay Duration
+                                    </small>
+                                    <h6 class="card-subtitle mb-2 pt-1"><?= $row['iDate'] ?> - <?= $row['oDate'] ?> </h6>
                                 </div>
                             </div>
                         </div>

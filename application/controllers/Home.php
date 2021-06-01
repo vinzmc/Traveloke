@@ -20,5 +20,6 @@ class Home extends CI_Controller
 
 		$data['view'] = $this->load->view('template/view', $hotel, TRUE);
 		$this->load->view('pages/home', $data);
+		unset($_SESSION['error']);
 	}
 }

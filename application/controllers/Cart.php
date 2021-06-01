@@ -18,9 +18,27 @@ class Cart extends CI_Controller
 		$this->load->view('pages/cart', $data);
 	}
 
+	public function cartDetail($id){
+		if(!isset($id))redirect();
+		$_POST['id'] = $id;
+		$data['db'] = $this->cart_model->getRow();
+
+		$data['date'] = $this->cart_model->getTodayDate();
+		$data['style'] = $this->load->view('include/style', NULL, TRUE);
+		$data['script'] = $this->load->view('include/script', NULL, TRUE);
+		$data['navbar'] = $this->load->view('template/navbar', NULL, TRUE);
+		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
+		$this->load->view('pages/cart/cartDetail', $data);
+
+		unset($_SESSION['error']);
+	}
+
 	public function insert_item(){
-		$this->cart_model->insertItem();
-		redirect('cart');
+		if($this->cart_model->insertItem()){
+			redirect('cart');
+		}else{
+			redirect('cart/cartDetail/'.$_POST['id']);
+		}
 	}
 
 	public function delete_item(){
