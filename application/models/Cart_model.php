@@ -39,7 +39,7 @@ class Cart_model extends CI_Model
             return false;
         }
         if (!isset($_POST['outDate'])) {
-            $this->session->set_flashdata('error', 'Tanggal Check-in tidak boleh dikosongkan!');
+            $this->session->set_flashdata('error', 'Tanggal Check-out tidak boleh dikosongkan!');
             return false;
         }
         if (strtotime($_POST['inDate']) >= strtotime($_POST['outDate'])) {
