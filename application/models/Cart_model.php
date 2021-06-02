@@ -46,10 +46,6 @@ class Cart_model extends CI_Model
             $this->session->set_flashdata('error', 'Tanggal Check-in dan Check-out bertabrakan!');
             return false;
         }
-        if (strtotime($_POST['inDate']) > $this->getTodayDate()) {
-            $this->session->set_flashdata('error', 'Tidak dapat memesan di masa lalu!');
-            return false;
-        }
         if (!isset($_POST['room'])) {
             $this->session->set_flashdata('error', 'Jumlah Ruangan tidak boleh dikosongkan!');
             return false;
