@@ -5,6 +5,7 @@ Hotel reservation website.
 Implements MVC
 
 Feature:
+
 - Search and Filter
 - User and Authentication
 - Database Administrator CRUD (On Website)
@@ -12,11 +13,13 @@ Feature:
 - Dummy Transaction System
 
 Framework and Library:
+
 - CodeIgniter 3
 - SQL database
 - Bootstrap
 
 Language:
+
 - PHP
 - HTML
 - CSS
