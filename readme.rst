@@ -1,3 +1,6 @@
+###################
+About
+###################
 Hotel reservation website.
 Implements MVC
 
