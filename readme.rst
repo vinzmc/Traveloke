@@ -26,6 +26,7 @@ Language:
 - SQL
 
 Plugin:
+
 - DataTables
 
 Preview:
