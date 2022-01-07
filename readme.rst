@@ -25,6 +25,9 @@ Language:
 - CSS
 - SQL
 
+Plugin:
+- DataTables
+
 Preview:
 
 - Home Page
